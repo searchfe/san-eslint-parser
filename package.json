@@ -73,6 +73,11 @@
     "watch:coverage-report": "wait-on coverage/lcov-report/index.html && opener coverage/lcov-report/index.html"
   },
   "keywords": [],
-  "author": "suyanzhi",
-  "license": "MIT"
+  "author": "suyanzhi<wuyan14@baidu.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/suyanzhi/san-eslint-parser#readme",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/suyanzhi/san-eslint-parser.git"
+    }
 }
