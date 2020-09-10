@@ -73,6 +73,6 @@
     "watch:coverage-report": "wait-on coverage/lcov-report/index.html && opener coverage/lcov-report/index.html"
   },
   "keywords": [],
-  "author": "Toru Nagashima",
+  "author": "suyanzhi",
   "license": "MIT"
 }
