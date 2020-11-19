@@ -16,6 +16,7 @@
     "debug": "^4.1.1",
     "eslint-scope": "^5.0.0",
     "eslint-visitor-keys": "^1.1.0",
+    "esm": "^3.2.25",
     "espree": "^6.2.1",
     "esquery": "^1.0.1",
     "lodash": "^4.17.15"
@@ -69,10 +70,10 @@
     "watch:tsc": "tsc --module es2015 --watch",
     "watch:rollup": "wait-on .temp/index.js && rollup -c -o index.js --watch",
     "watch:test": "wait-on index.js && warun index.js \"test/*.js\" \"test/fixtures/ast/*/*.json\" \"test/fixtures/*\" --debounce 1000 --no-initial -- nyc mocha \"test/*.js\" --reporter dot --timeout 10000",
-    "watch:update-ast": "wait-on index.js && warun index.js \"test/fixtures/ast/*/*.vue\" -- node scripts/update-fixtures-ast.js",
+    "watch:update-ast": "wait-on index.js && warun index.js \"test/fixtures/ast/*/*.san\" -- node scripts/update-fixtures-ast.js",
     "watch:coverage-report": "wait-on coverage/lcov-report/index.html && opener coverage/lcov-report/index.html"
   },
   "keywords": [],
-  "author": "suyanzhi",
+  "author": "searchfe",
   "license": "MIT"
 }

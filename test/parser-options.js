@@ -31,7 +31,7 @@ describe("parserOptions", () => {
                     "vue/valid-template-root": "error",
                 },
             }
-            const messages = linter.verify(code, config, "test.vue")
+            const messages = linter.verify(code, config, "test.san")
 
             assert.strictEqual(messages.length, 1)
             assert.strictEqual(messages[0].ruleId, "vue/valid-template-root")

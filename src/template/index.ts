@@ -35,7 +35,13 @@ import {
 } from "../script"
 
 const shorthandSign = /^[.:@#]/u
-const shorthandNameMap = { ":": "bind", ".": "bind", "@": "on", "#": "slot" }
+const shorthandNameMap = {
+    ":": "bind",
+    ".": "bind",
+    "@": "on",
+    "#": "slot",
+    "on-": "on",
+}
 const invalidDynamicArgumentNextChar = /^[\s\r\n=/>]$/u
 
 /**
@@ -125,10 +131,16 @@ function parseDirectiveKeyStatically(
     }
 
     // Parse.
-    if (shorthandSign.test(text)) {
-        const sign = text[0] as ":" | "." | "@" | "#"
-        directiveKey.name = createIdentifier(0, 1, shorthandNameMap[sign])
-        i = 1
+    if (shorthandSign.test(text) || text.includes("on-")) {
+        if (text.includes("on-")) {
+            const sign = "on-"
+            directiveKey.name = createIdentifier(0, 3, shorthandNameMap[sign])
+            i = 3
+        } else {
+            const sign = text[0] as ":" | "." | "@" | "#"
+            directiveKey.name = createIdentifier(0, 1, shorthandNameMap[sign])
+            i = 1
+        }
     } else {
         const colon = text.indexOf(":")
         if (colon !== -1) {
@@ -225,7 +237,10 @@ function isNotEmptyModifier(node: VIdentifier): boolean {
  */
 function parseDirectiveKeyTokens(node: VDirectiveKey): Token[] {
     const { name, argument, modifiers } = node
-    const shorthand = name.range[1] - name.range[0] === 1
+    let shorthand = name.range[1] - name.range[0] === 1
+    if (name.rawName === "on-") {
+        shorthand = name.range[1] - name.range[0] === 3
+    }
     const tokens: Token[] = []
 
     if (shorthand) {

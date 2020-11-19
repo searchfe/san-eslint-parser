@@ -1,7 +1,7 @@
 [
     {
         "type": "VElement",
-        "text": "<template>\n    <div v-:..b></div>\n</template>",
+        "text": "<template>\n    <div s-:..b></div>\n</template>",
         "children": [
             {
                 "type": "VStartTag",
@@ -15,23 +15,23 @@
             },
             {
                 "type": "VElement",
-                "text": "<div v-:..b></div>",
+                "text": "<div s-:..b></div>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div v-:..b>",
+                        "text": "<div s-:..b>",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "v-:..b",
+                                "text": "s-:..b",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "v-:..b",
+                                        "text": "s-:..b",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "v-",
+                                                "text": "s-",
                                                 "children": []
                                             },
                                             {

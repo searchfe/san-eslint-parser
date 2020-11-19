@@ -1,7 +1,6 @@
 /**
- * @author Toru Nagashima <https://github.com/mysticatea>
- * @copyright 2017 Toru Nagashima. All rights reserved.
- * See LICENSE file in root directory for full license.
+ * @author searchfe
+ *
  */
 "use strict"
 
@@ -46,7 +45,7 @@ function toValue(token) {
 describe("services.getTemplateBodyTokenStore", () => {
     const code = `<template>
     <!--comment1-->
-    <div a="b" v-show="c &lt; 3 &amp;&amp; ok == &quot;ok&quot;"><!--comment2-->{{ message /*comment3*/ }}<!--comment4--></div>
+    <div a="b" s-show="c &lt; 3 &amp;&amp; ok == &quot;ok&quot;"><!--comment2-->{{ message /*comment3*/ }}<!--comment4--></div>
 </template>`
     let ast = null
     let tokens = null
@@ -54,7 +53,7 @@ describe("services.getTemplateBodyTokenStore", () => {
     before(() => {
         const result = parse(
             code,
-            Object.assign({ filePath: "test.vue" }, PARSER_OPTIONS)
+            Object.assign({ filePath: "test.san" }, PARSER_OPTIONS)
         )
         ast = result.ast
         tokens = result.services.getTemplateBodyTokenStore()
@@ -63,7 +62,6 @@ describe("services.getTemplateBodyTokenStore", () => {
     describe("ast.templateBody", () => {
         it("should return all tokens (except comments) in the template.", () => {
             const actual = tokens.getTokens(ast.templateBody).map(toValue)
-
             assert.deepStrictEqual(actual, [
                 "template",
                 ">",
@@ -73,7 +71,7 @@ describe("services.getTemplateBodyTokenStore", () => {
                 "a",
                 "=",
                 "b",
-                "v-show",
+                "s-show",
                 "=",
                 '"',
                 "c",
@@ -111,7 +109,7 @@ describe("services.getTemplateBodyTokenStore", () => {
                 "a",
                 "=",
                 "b",
-                "v-show",
+                "s-show",
                 "=",
                 '"',
                 "c",
@@ -157,7 +155,7 @@ describe("services.getTemplateBodyTokenStore", () => {
                 "a",
                 "=",
                 "b",
-                "v-show",
+                "s-show",
                 "=",
                 '"',
                 "c",
@@ -188,7 +186,7 @@ describe("services.getTemplateBodyTokenStore", () => {
                 "a",
                 "=",
                 "b",
-                "v-show",
+                "s-show",
                 "=",
                 '"',
                 "c",
@@ -237,7 +235,7 @@ describe("services.getTemplateBodyTokenStore", () => {
             const node = ast.templateBody.children[2].startTag.attributes[1].key
             const actual = tokens.getTokens(node).map(toValue)
 
-            assert.deepStrictEqual(actual, ["v-show"])
+            assert.deepStrictEqual(actual, ["s-show"])
         })
     })
 

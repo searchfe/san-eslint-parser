@@ -1,0 +1,5 @@
+<template>
+    <div s-a.b></div>
+    <div s-a.b=v></div>
+    <div s-a.b.c=v></div>
+</template>

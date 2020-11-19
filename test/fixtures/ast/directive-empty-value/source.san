@@ -1,0 +1,8 @@
+<template>
+    <div s-on:a=""></div>
+    <div s-on:a=''></div>
+    <div s-bind=""></div>
+    <div s-bind=''></div>
+    <div s-for=""></div>
+    <div s-for=''></div>
+</template>

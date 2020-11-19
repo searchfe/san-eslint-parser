@@ -1,7 +1,7 @@
 [
     {
         "type": "VElement",
-        "text": "<template>\n    <div v-a></div>\n    <div v-a=></div>\n    <div v-a=b></div>\n    <div v-a=\"b\"></div>\n    <div v-a='b'></div>\n    <div v-a=\"\"></div>\n    <div v-a=''></div>\n</template>",
+        "text": "<template>\n    <div s-a></div>\n    <div s-a=></div>\n    <div s-a=b></div>\n    <div s-a=\"b\"></div>\n    <div s-a='b'></div>\n    <div s-a=\"\"></div>\n    <div s-a=''></div>\n</template>",
         "children": [
             {
                 "type": "VStartTag",
@@ -15,23 +15,23 @@
             },
             {
                 "type": "VElement",
-                "text": "<div v-a></div>",
+                "text": "<div s-a></div>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div v-a>",
+                        "text": "<div s-a>",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "v-a",
+                                "text": "s-a",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "v-a",
+                                        "text": "s-a",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "v-a",
+                                                "text": "s-a",
                                                 "children": []
                                             }
                                         ]
@@ -54,23 +54,23 @@
             },
             {
                 "type": "VElement",
-                "text": "<div v-a=></div>",
+                "text": "<div s-a=></div>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div v-a=>",
+                        "text": "<div s-a=>",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "v-a=",
+                                "text": "s-a=",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "v-a",
+                                        "text": "s-a",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "v-a",
+                                                "text": "s-a",
                                                 "children": []
                                             }
                                         ]
@@ -93,23 +93,23 @@
             },
             {
                 "type": "VElement",
-                "text": "<div v-a=b></div>",
+                "text": "<div s-a=b></div>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div v-a=b>",
+                        "text": "<div s-a=b>",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "v-a=b",
+                                "text": "s-a=b",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "v-a",
+                                        "text": "s-a",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "v-a",
+                                                "text": "s-a",
                                                 "children": []
                                             }
                                         ]
@@ -143,23 +143,23 @@
             },
             {
                 "type": "VElement",
-                "text": "<div v-a=\"b\"></div>",
+                "text": "<div s-a=\"b\"></div>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div v-a=\"b\">",
+                        "text": "<div s-a=\"b\">",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "v-a=\"b\"",
+                                "text": "s-a=\"b\"",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "v-a",
+                                        "text": "s-a",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "v-a",
+                                                "text": "s-a",
                                                 "children": []
                                             }
                                         ]
@@ -193,23 +193,23 @@
             },
             {
                 "type": "VElement",
-                "text": "<div v-a='b'></div>",
+                "text": "<div s-a='b'></div>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div v-a='b'>",
+                        "text": "<div s-a='b'>",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "v-a='b'",
+                                "text": "s-a='b'",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "v-a",
+                                        "text": "s-a",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "v-a",
+                                                "text": "s-a",
                                                 "children": []
                                             }
                                         ]
@@ -243,23 +243,23 @@
             },
             {
                 "type": "VElement",
-                "text": "<div v-a=\"\"></div>",
+                "text": "<div s-a=\"\"></div>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div v-a=\"\">",
+                        "text": "<div s-a=\"\">",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "v-a=\"\"",
+                                "text": "s-a=\"\"",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "v-a",
+                                        "text": "s-a",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "v-a",
+                                                "text": "s-a",
                                                 "children": []
                                             }
                                         ]
@@ -287,23 +287,23 @@
             },
             {
                 "type": "VElement",
-                "text": "<div v-a=''></div>",
+                "text": "<div s-a=''></div>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div v-a=''>",
+                        "text": "<div s-a=''>",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "v-a=''",
+                                "text": "s-a=''",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "v-a",
+                                        "text": "s-a",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "v-a",
+                                                "text": "s-a",
                                                 "children": []
                                             }
                                         ]

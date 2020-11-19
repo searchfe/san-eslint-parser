@@ -1,7 +1,7 @@
 [
     {
         "type": "VElement",
-        "text": "<template>\n    {{}}\n    {{ }}\n    <div :a=\"\"></div>\n    <div :b=\" \"></div>\n    <div @a=\"\"></div>\n    <div @b=\" \"></div>\n    <div v-for=\"\"></div>\n    <div v-for=\" \"></div>\n</template>",
+        "text": "<template>\n    {{}}\n    {{ }}\n    <div :a=\"\"></div>\n    <div :b=\" \"></div>\n    <div @a=\"\"></div>\n    <div @b=\" \"></div>\n    <div s-for=\"\"></div>\n    <div s-for=\" \"></div>\n</template>",
         "children": [
             {
                 "type": "VStartTag",
@@ -221,23 +221,23 @@
             },
             {
                 "type": "VElement",
-                "text": "<div v-for=\"\"></div>",
+                "text": "<div s-for=\"\"></div>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div v-for=\"\">",
+                        "text": "<div s-for=\"\">",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "v-for=\"\"",
+                                "text": "s-for=\"\"",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "v-for",
+                                        "text": "s-for",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "v-for",
+                                                "text": "s-for",
                                                 "children": []
                                             }
                                         ]
@@ -265,23 +265,23 @@
             },
             {
                 "type": "VElement",
-                "text": "<div v-for=\" \"></div>",
+                "text": "<div s-for=\" \"></div>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div v-for=\" \">",
+                        "text": "<div s-for=\" \">",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "v-for=\" \"",
+                                "text": "s-for=\" \"",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "v-for",
+                                        "text": "s-for",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "v-for",
+                                                "text": "s-for",
                                                 "children": []
                                             }
                                         ]

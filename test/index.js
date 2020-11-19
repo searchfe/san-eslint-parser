@@ -46,7 +46,7 @@ describe("Basic tests", () => {
         fs.removeSync(FIXTURE_DIR)
     })
 
-    describe("About fixtures/hello.vue", () => {
+    describe("About fixtures/hello.san", () => {
         it("should notify 2 'semi' errors", () => {
             const cli = new CLIEngine({
                 cwd: FIXTURE_DIR,
@@ -55,7 +55,7 @@ describe("Basic tests", () => {
                 rules: { semi: "error" },
                 useEslintrc: false,
             })
-            const report = cli.executeOnFiles(["hello.vue"])
+            const report = cli.executeOnFiles(["hello.san"])
             const messages = report.results[0].messages
 
             assert(messages.length === 2)
@@ -76,14 +76,14 @@ describe("Basic tests", () => {
                 rules: { semi: "error" },
                 useEslintrc: false,
             })
-            CLIEngine.outputFixes(cli.executeOnFiles(["hello.vue"]))
+            CLIEngine.outputFixes(cli.executeOnFiles(["hello.san"]))
 
             const actual = fs.readFileSync(
-                path.join(FIXTURE_DIR, "hello.vue"),
+                path.join(FIXTURE_DIR, "hello.san"),
                 "utf8"
             )
             const expected = fs.readFileSync(
-                path.join(FIXTURE_DIR, "hello.vue.fixed"),
+                path.join(FIXTURE_DIR, "hello.san.fixed"),
                 "utf8"
             )
 
@@ -91,7 +91,7 @@ describe("Basic tests", () => {
         })
     })
 
-    describe("About fixtures/empty.vue", () => {
+    describe("About fixtures/empty.san", () => {
         it("should notify no error", () => {
             const cli = new CLIEngine({
                 cwd: FIXTURE_DIR,
@@ -100,14 +100,14 @@ describe("Basic tests", () => {
                 rules: { semi: "error" },
                 useEslintrc: false,
             })
-            const report = cli.executeOnFiles(["empty.vue"])
+            const report = cli.executeOnFiles(["empty.san"])
             const messages = report.results[0].messages
 
             assert(messages.length === 0)
         })
     })
 
-    describe("About fixtures/no-script.vue", () => {
+    describe("About fixtures/no-script.san", () => {
         it("should notify no error", () => {
             const cli = new CLIEngine({
                 cwd: FIXTURE_DIR,
@@ -116,14 +116,14 @@ describe("Basic tests", () => {
                 rules: { semi: "error" },
                 useEslintrc: false,
             })
-            const report = cli.executeOnFiles(["no-script.vue"])
+            const report = cli.executeOnFiles(["no-script.san"])
             const messages = report.results[0].messages
 
             assert(messages.length === 0)
         })
     })
 
-    describe("About fixtures/empty-script.vue", () => {
+    describe("About fixtures/empty-script.san", () => {
         it("should notify no error", () => {
             const cli = new CLIEngine({
                 cwd: FIXTURE_DIR,
@@ -132,14 +132,14 @@ describe("Basic tests", () => {
                 rules: { semi: "error" },
                 useEslintrc: false,
             })
-            const report = cli.executeOnFiles(["empty-script.vue"])
+            const report = cli.executeOnFiles(["empty-script.san"])
             const messages = report.results[0].messages
 
             assert(messages.length === 0)
         })
     })
 
-    describe("About fixtures/no-end-script-tag.vue", () => {
+    describe("About fixtures/no-end-script-tag.san", () => {
         it("should notify no error", () => {
             const cli = new CLIEngine({
                 cwd: FIXTURE_DIR,
@@ -148,7 +148,7 @@ describe("Basic tests", () => {
                 rules: { semi: "error" },
                 useEslintrc: false,
             })
-            const report = cli.executeOnFiles(["no-end-script-tag.vue"])
+            const report = cli.executeOnFiles(["no-end-script-tag.san"])
             const messages = report.results[0].messages
 
             assert(messages.length === 0)
@@ -197,7 +197,7 @@ describe("Basic tests", () => {
         })
     })
 
-    describe("About fixtures/crlf.vue", () => {
+    describe("About fixtures/crlf.san", () => {
         it("should notify no 'indent' error", () => {
             const cli = new CLIEngine({
                 cwd: FIXTURE_DIR,
@@ -206,7 +206,7 @@ describe("Basic tests", () => {
                 rules: { indent: "error" },
                 useEslintrc: false,
             })
-            const report = cli.executeOnFiles(["crlf.vue"])
+            const report = cli.executeOnFiles(["crlf.san"])
             const messages = report.results[0].messages
 
             assert(messages.length === 0)
@@ -250,7 +250,7 @@ describe("Basic tests", () => {
         })
     })
 
-    describe("About fixtures/typed.vue", () => {
+    describe("About fixtures/typed.san", () => {
         it("should notify no error with 'babel-eslint'", () => {
             const cli = new CLIEngine({
                 cwd: FIXTURE_DIR,
@@ -263,7 +263,7 @@ describe("Basic tests", () => {
                 rules: { semi: ["error", "never"] },
                 useEslintrc: false,
             })
-            const report = cli.executeOnFiles(["typed.vue"])
+            const report = cli.executeOnFiles(["typed.san"])
             const messages = report.results[0].messages
 
             assert(messages.length === 0)
@@ -280,7 +280,7 @@ describe("Basic tests", () => {
                 rules: { semi: ["error", "never"] },
                 useEslintrc: false,
             })
-            const report = cli.executeOnFiles(["typed.vue"])
+            const report = cli.executeOnFiles(["typed.san"])
             const messages = report.results[0].messages
 
             assert(messages.length === 0)
@@ -299,14 +299,14 @@ describe("Basic tests", () => {
                 rules: { semi: ["error", "always"] },
                 useEslintrc: false,
             })
-            CLIEngine.outputFixes(cli.executeOnFiles(["typed.vue"]))
+            CLIEngine.outputFixes(cli.executeOnFiles(["typed.san"]))
 
             const actual = fs.readFileSync(
-                path.join(FIXTURE_DIR, "typed.vue"),
+                path.join(FIXTURE_DIR, "typed.san"),
                 "utf8"
             )
             const expected = fs.readFileSync(
-                path.join(FIXTURE_DIR, "typed.vue.fixed"),
+                path.join(FIXTURE_DIR, "typed.san.fixed"),
                 "utf8"
             )
 
@@ -325,14 +325,14 @@ describe("Basic tests", () => {
                 rules: { semi: ["error", "always"] },
                 useEslintrc: false,
             })
-            CLIEngine.outputFixes(cli.executeOnFiles(["typed.vue"]))
+            CLIEngine.outputFixes(cli.executeOnFiles(["typed.san"]))
 
             const actual = fs.readFileSync(
-                path.join(FIXTURE_DIR, "typed.vue"),
+                path.join(FIXTURE_DIR, "typed.san"),
                 "utf8"
             )
             const expected = fs.readFileSync(
-                path.join(FIXTURE_DIR, "typed.vue.fixed"),
+                path.join(FIXTURE_DIR, "typed.san.fixed"),
                 "utf8"
             )
 
@@ -340,7 +340,7 @@ describe("Basic tests", () => {
         })
     })
 
-    describe("About fixtures/svg-attrs.vue", () => {
+    describe("About fixtures/svg-attrs.san", () => {
         it("parses attributes with colons", () => {
             const cli = new CLIEngine({
                 cwd: FIXTURE_DIR,
@@ -348,7 +348,7 @@ describe("Basic tests", () => {
                 parser: PARSER_PATH,
                 useEslintrc: false,
             })
-            const report = cli.executeOnFiles(["svg-attrs-colon.vue"])
+            const report = cli.executeOnFiles(["svg-attrs-colon.san"])
             const messages = report.results[0].messages
 
             assert(messages.length === 0)
@@ -361,14 +361,14 @@ describe("Basic tests", () => {
                 parser: PARSER_PATH,
                 useEslintrc: false,
             })
-            const report = cli.executeOnFiles(["svg-attrs-camel-case.vue"])
+            const report = cli.executeOnFiles(["svg-attrs-camel-case.san"])
             const messages = report.results[0].messages
 
             assert(messages.length === 0)
         })
     })
 
-    describe("About fixtures/location-issue-with-babel-eslint.vue", () => {
+    describe("About fixtures/location-issue-with-babel-eslint.san", () => {
         it("Identifiers in import declarations should has correct location.", () => {
             const cli = new CLIEngine({
                 cwd: FIXTURE_DIR,
@@ -385,7 +385,7 @@ describe("Basic tests", () => {
                 useEslintrc: false,
             })
             const report = cli.executeOnFiles([
-                "location-issue-with-babel-eslint.vue",
+                "location-issue-with-babel-eslint.san",
             ])
             const messages = report.results[0].messages
 
@@ -516,7 +516,7 @@ describe("Basic tests", () => {
     describe("About parserServices", () => {
         it("should exist if the source code is a Vue SFC file.", () => {
             assert.notStrictEqual(
-                parseForESLint("test", { filePath: "test.vue" }).services,
+                parseForESLint("test", { filePath: "test.san" }).services,
                 undefined
             )
         })

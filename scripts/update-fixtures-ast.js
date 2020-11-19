@@ -100,7 +100,7 @@ function getTree(source, ast) {
 //------------------------------------------------------------------------------
 
 for (const name of TARGETS) {
-    const sourcePath = path.join(ROOT, `${name}/source.vue`)
+    const sourcePath = path.join(ROOT, `${name}/source.san`)
     const astPath = path.join(ROOT, `${name}/ast.json`)
     const tokenRangesPath = path.join(ROOT, `${name}/token-ranges.json`)
     const treePath = path.join(ROOT, `${name}/tree.json`)

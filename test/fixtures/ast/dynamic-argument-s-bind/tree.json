@@ -1,7 +1,7 @@
 [
     {
         "type": "VElement",
-        "text": "<template>\n    {{a + }}\n    <div s-for=\"abc\"></div>\n    <div :foo=\"abc + (1\"></div>\n    <div @click=\"abc('hello'\"></div>\n    <div on-click=\"abc('hello'\"></div>\n</template>",
+        "text": "<template>\n    <button s-bind:[key]=\"foo\"></button>\n    <button :[key]=\"foo\"></button>\n    <button :[key].enter=\"foo\"></button>\n</template>",
         "children": [
             {
                 "type": "VStartTag",
@@ -14,42 +14,49 @@
                 "children": []
             },
             {
-                "type": "VExpressionContainer",
-                "text": "{{a + }}",
-                "children": []
-            },
-            {
-                "type": "VText",
-                "text": "\n    ",
-                "children": []
-            },
-            {
                 "type": "VElement",
-                "text": "<div s-for=\"abc\"></div>",
+                "text": "<button s-bind:[key]=\"foo\"></button>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div s-for=\"abc\">",
+                        "text": "<button s-bind:[key]=\"foo\">",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "s-for=\"abc\"",
+                                "text": "s-bind:[key]=\"foo\"",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "s-for",
+                                        "text": "s-bind:[key]",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "s-for",
+                                                "text": "s-bind",
                                                 "children": []
+                                            },
+                                            {
+                                                "type": "VExpressionContainer",
+                                                "text": "[key]",
+                                                "children": [
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "key",
+                                                        "children": []
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
                                     {
                                         "type": "VExpressionContainer",
-                                        "text": "\"abc\"",
-                                        "children": []
+                                        "text": "\"foo\"",
+                                        "children": [
+                                            {
+                                                "type": "Identifier",
+                                                "text": "foo",
+                                                "children": []
+                                            }
+                                        ]
                                     }
                                 ]
                             }
@@ -57,7 +64,7 @@
                     },
                     {
                         "type": "VEndTag",
-                        "text": "</div>",
+                        "text": "</button>",
                         "children": []
                     }
                 ]
@@ -69,19 +76,19 @@
             },
             {
                 "type": "VElement",
-                "text": "<div :foo=\"abc + (1\"></div>",
+                "text": "<button :[key]=\"foo\"></button>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div :foo=\"abc + (1\">",
+                        "text": "<button :[key]=\"foo\">",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": ":foo=\"abc + (1\"",
+                                "text": ":[key]=\"foo\"",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": ":foo",
+                                        "text": ":[key]",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
@@ -89,16 +96,28 @@
                                                 "children": []
                                             },
                                             {
-                                                "type": "VIdentifier",
+                                                "type": "VExpressionContainer",
+                                                "text": "[key]",
+                                                "children": [
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "key",
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"foo\"",
+                                        "children": [
+                                            {
+                                                "type": "Identifier",
                                                 "text": "foo",
                                                 "children": []
                                             }
                                         ]
-                                    },
-                                    {
-                                        "type": "VExpressionContainer",
-                                        "text": "\"abc + (1\"",
-                                        "children": []
                                     }
                                 ]
                             }
@@ -106,7 +125,7 @@
                     },
                     {
                         "type": "VEndTag",
-                        "text": "</div>",
+                        "text": "</button>",
                         "children": []
                     }
                 ]
@@ -118,36 +137,53 @@
             },
             {
                 "type": "VElement",
-                "text": "<div @click=\"abc('hello'\"></div>",
+                "text": "<button :[key].enter=\"foo\"></button>",
                 "children": [
                     {
                         "type": "VStartTag",
-                        "text": "<div @click=\"abc('hello'\">",
+                        "text": "<button :[key].enter=\"foo\">",
                         "children": [
                             {
                                 "type": "VAttribute",
-                                "text": "@click=\"abc('hello'\"",
+                                "text": ":[key].enter=\"foo\"",
                                 "children": [
                                     {
                                         "type": "VDirectiveKey",
-                                        "text": "@click",
+                                        "text": ":[key].enter",
                                         "children": [
                                             {
                                                 "type": "VIdentifier",
-                                                "text": "@",
+                                                "text": ":",
                                                 "children": []
                                             },
                                             {
+                                                "type": "VExpressionContainer",
+                                                "text": "[key]",
+                                                "children": [
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "key",
+                                                        "children": []
+                                                    }
+                                                ]
+                                            },
+                                            {
                                                 "type": "VIdentifier",
-                                                "text": "click",
+                                                "text": "enter",
                                                 "children": []
                                             }
                                         ]
                                     },
                                     {
                                         "type": "VExpressionContainer",
-                                        "text": "\"abc('hello'\"",
-                                        "children": []
+                                        "text": "\"foo\"",
+                                        "children": [
+                                            {
+                                                "type": "Identifier",
+                                                "text": "foo",
+                                                "children": []
+                                            }
+                                        ]
                                     }
                                 ]
                             }
@@ -155,56 +191,7 @@
                     },
                     {
                         "type": "VEndTag",
-                        "text": "</div>",
-                        "children": []
-                    }
-                ]
-            },
-            {
-                "type": "VText",
-                "text": "\n    ",
-                "children": []
-            },
-            {
-                "type": "VElement",
-                "text": "<div on-click=\"abc('hello'\"></div>",
-                "children": [
-                    {
-                        "type": "VStartTag",
-                        "text": "<div on-click=\"abc('hello'\">",
-                        "children": [
-                            {
-                                "type": "VAttribute",
-                                "text": "on-click=\"abc('hello'\"",
-                                "children": [
-                                    {
-                                        "type": "VDirectiveKey",
-                                        "text": "on-click",
-                                        "children": [
-                                            {
-                                                "type": "VIdentifier",
-                                                "text": "on-",
-                                                "children": []
-                                            },
-                                            {
-                                                "type": "VIdentifier",
-                                                "text": "click",
-                                                "children": []
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "VExpressionContainer",
-                                        "text": "\"abc('hello'\"",
-                                        "children": []
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "type": "VEndTag",
-                        "text": "</div>",
+                        "text": "</button>",
                         "children": []
                     }
                 ]

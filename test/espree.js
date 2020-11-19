@@ -37,7 +37,7 @@ function childMain() {
     linter.verify(
         "<script>'hello'</script>",
         { parser: "san-eslint-parser" },
-        { filename: "a.vue" }
+        { filename: "a.san" }
     )
 
     const afterEsprees = Object.keys(require.cache).filter(isEspreePath)

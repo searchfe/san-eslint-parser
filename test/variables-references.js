@@ -30,13 +30,13 @@ const PARSER_OPTIONS = {
 
 describe("[references] expression containers", () => {
     describe("in directives", () => {
-        const code = '<template><div v-foo="a + b"></div></template>'
+        const code = '<template><div s-foo="a + b"></div></template>'
         let ast = null
 
         before(() => {
             ast = parse(
                 code,
-                Object.assign({ filePath: "test.vue" }, PARSER_OPTIONS)
+                Object.assign({ filePath: "test.san" }, PARSER_OPTIONS)
             ).ast
         })
 
@@ -64,7 +64,7 @@ describe("[references] expression containers", () => {
         before(() => {
             ast = parse(
                 code,
-                Object.assign({ filePath: "test.vue" }, PARSER_OPTIONS)
+                Object.assign({ filePath: "test.san" }, PARSER_OPTIONS)
             ).ast
         })
 
@@ -78,14 +78,14 @@ describe("[references] expression containers", () => {
         })
     })
 
-    describe("in v-on directive", () => {
+    describe("in s-on directive", () => {
         const code = '<template><div @foo="foo($event)"></div></template>'
         let ast = null
 
         before(() => {
             ast = parse(
                 code,
-                Object.assign({ filePath: "test.vue" }, PARSER_OPTIONS)
+                Object.assign({ filePath: "test.san" }, PARSER_OPTIONS)
             ).ast
         })
 
@@ -112,7 +112,7 @@ describe("[variables] elements", () => {
         before(() => {
             ast = parse(
                 code,
-                Object.assign({ filePath: "test.vue" }, PARSER_OPTIONS)
+                Object.assign({ filePath: "test.san" }, PARSER_OPTIONS)
             ).ast
         })
 
@@ -140,7 +140,7 @@ describe("[variables] elements", () => {
         before(() => {
             ast = parse(
                 code,
-                Object.assign({ filePath: "test.vue" }, PARSER_OPTIONS)
+                Object.assign({ filePath: "test.san" }, PARSER_OPTIONS)
             ).ast
         })
 
@@ -171,7 +171,7 @@ describe("[variables] elements", () => {
         before(() => {
             ast = parse(
                 code,
-                Object.assign({ filePath: "test.vue" }, PARSER_OPTIONS)
+                Object.assign({ filePath: "test.san" }, PARSER_OPTIONS)
             ).ast
         })
 
@@ -206,7 +206,7 @@ describe("Variables of s-for and references", () => {
     before(() => {
         const ast = parse(
             code,
-            Object.assign({ filePath: "test.vue" }, PARSER_OPTIONS)
+            Object.assign({ filePath: "test.san" }, PARSER_OPTIONS)
         ).ast
         variables = ast.templateBody.children[0].variables
         vForReferences =
@@ -276,7 +276,7 @@ describe("Variables of template-scope and references", () => {
     before(() => {
         const ast = parse(
             code,
-            Object.assign({ filePath: "test.vue" }, PARSER_OPTIONS)
+            Object.assign({ filePath: "test.san" }, PARSER_OPTIONS)
         ).ast
         variables = ast.templateBody.children[0].variables
         vBindKeyReferences =
@@ -338,7 +338,7 @@ describe("Variables of s-for and references of dynamic arguments", () => {
     before(() => {
         const ast = parse(
             code,
-            Object.assign({ filePath: "test.vue" }, PARSER_OPTIONS)
+            Object.assign({ filePath: "test.san" }, PARSER_OPTIONS)
         ).ast
         variables = ast.templateBody.children[0].variables
         vForReferences =

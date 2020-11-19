@@ -87,7 +87,7 @@ function modifyPattern(ruleId, pattern) {
         }
         return {
             code: wrapCode(pattern),
-            filename: "test.vue",
+            filename: "test.san",
             parser: PARSER_PATH,
         }
     }
@@ -111,7 +111,7 @@ function modifyPattern(ruleId, pattern) {
     }
 
     // Wrap the code by `<script>` tag.
-    pattern.filename = "test.vue"
+    pattern.filename = "test.san"
     pattern.parser = PARSER_PATH
     pattern.code = wrapCode(pattern.code)
     if (pattern.output != null) {

@@ -1,7 +1,7 @@
 [
     {
         "type": "VElement",
-        "text": "<template>\n    <div :a.b></div>\n    <div @a.b></div>\n</template>",
+        "text": "<template>\n    <div :a.b></div>\n    <div @a.b></div>\n    <div on-a.b></div>\n</template>",
         "children": [
             {
                 "type": "VStartTag",
@@ -81,6 +81,55 @@
                                             {
                                                 "type": "VIdentifier",
                                                 "text": "@",
+                                                "children": []
+                                            },
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "a",
+                                                "children": []
+                                            },
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "b",
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div on-a.b></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div on-a.b>",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "on-a.b",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "on-a.b",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "on-",
                                                 "children": []
                                             },
                                             {

@@ -1998,7 +1998,7 @@
                         "line": 8
                     }
                 },
-                "value": "v-for"
+                "value": "s-for"
             },
             {
                 "type": "HTMLAssociation",
@@ -2160,7 +2160,7 @@
                         "line": 9
                     }
                 },
-                "value": "v-for"
+                "value": "s-for"
             },
             {
                 "type": "HTMLAssociation",

@@ -13,7 +13,7 @@ const assert = require("assert")
 const fs = require("fs")
 const path = require("path")
 const lodash = require("lodash")
-const parser = require("../src")
+const parser = require("../src/index.ts")
 const Linter = require("./fixtures/eslint").Linter
 
 //------------------------------------------------------------------------------
@@ -168,15 +168,19 @@ function validateParent(source) {
 //------------------------------------------------------------------------------
 
 describe("Template AST", () => {
+    // TARGETS = ["error-message-empty"]
     for (const name of TARGETS) {
-        const sourcePath = path.join(ROOT, `${name}/source.vue`)
+        if (name === ".DS_Store") {
+            continue
+        }
+        const sourcePath = path.join(ROOT, `${name}/source.san`)
         const source = fs.readFileSync(sourcePath, "utf8")
         const actual = parser.parseForESLint(
             source,
             Object.assign({ filePath: sourcePath }, PARSER_OPTIONS)
         )
 
-        describe(`'test/fixtures/ast/${name}/source.vue'`, () => {
+        describe(`'test/fixtures/ast/${name}/source.san'`, () => {
             it("should be parsed to valid AST.", () => {
                 const resultPath = path.join(ROOT, `${name}/ast.json`)
                 const expected = fs.readFileSync(resultPath, "utf8")
