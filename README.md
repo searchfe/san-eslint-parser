@@ -1,7 +1,7 @@
 # san-eslint-parser
 
 The ESLint custom parser for `.san` files.
-This almost a copy of vue-eslint-parser, which is vue's parser
+Inspired by [vue-eslint-parser](https://github.com/vuejs/vue-eslint-parser)
 
 ## ⤴️ Motivation
 
