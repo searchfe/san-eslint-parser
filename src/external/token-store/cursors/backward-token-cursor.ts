@@ -1,6 +1,6 @@
 /**
  * @fileoverview Define the cursor which iterates tokens only in reverse.
- * @author Toru Nagashima
+ * 
  */
 import {Token} from "../../../ast"
 import {getFirstIndex, getLastIndex} from "../utils"

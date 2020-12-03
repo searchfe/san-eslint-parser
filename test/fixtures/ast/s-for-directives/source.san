@@ -1,0 +1,6 @@
+<template>
+    <div s-for="a in list"></div>
+    <div s-for="(a, b, c) in list"></div>
+    <div s-for="a of list"></div>
+    <div s-for="(a, b, c) of list"></div>
+</template>

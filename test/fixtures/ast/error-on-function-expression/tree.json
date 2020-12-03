@@ -1,0 +1,72 @@
+[
+    {
+        "type": "VElement",
+        "text": "<template>\n    <button on-click=\"function() { err( }\"></button>\n</template>",
+        "children": [
+            {
+                "type": "VStartTag",
+                "text": "<template>",
+                "children": []
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<button on-click=\"function() { err( }\"></button>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<button on-click=\"function() { err( }\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "on-click=\"function() { err( }\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "on-click",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "on-",
+                                                "children": []
+                                            },
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "click",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"function() { err( }\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</button>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n",
+                "children": []
+            },
+            {
+                "type": "VEndTag",
+                "text": "</template>",
+                "children": []
+            }
+        ]
+    }
+]

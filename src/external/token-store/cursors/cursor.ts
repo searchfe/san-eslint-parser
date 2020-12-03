@@ -1,6 +1,6 @@
 /**
  * @fileoverview Define the abstract class about cursors which iterate tokens.
- * @author Toru Nagashima
+ * 
  */
 import {Token} from "../../../ast"
 

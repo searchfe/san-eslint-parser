@@ -1,0 +1,3 @@
+<template>
+    <div s-html="a | b"></div>
+</template>

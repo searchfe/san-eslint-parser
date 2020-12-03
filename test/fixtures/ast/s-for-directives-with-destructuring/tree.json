@@ -1,0 +1,371 @@
+[
+    {
+        "type": "VElement",
+        "text": "<template>\n    <div s-for=\"{key,name} in list\"></div>\n    <div s-for=\"([a,,b], c) in list\"></div>\n    <div s-for=\"[a,b] of list\"></div>\n    <div s-for=\"{[z]:key=x,name} in list\"></div>\n</template>",
+        "children": [
+            {
+                "type": "VStartTag",
+                "text": "<template>",
+                "children": []
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-for=\"{key,name} in list\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-for=\"{key,name} in list\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-for=\"{key,name} in list\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-for",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-for",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{key,name} in list\"",
+                                        "children": [
+                                            {
+                                                "type": "VForExpression",
+                                                "text": "{key,name} in list",
+                                                "children": [
+                                                    {
+                                                        "type": "ObjectPattern",
+                                                        "text": "{key,name}",
+                                                        "children": [
+                                                            {
+                                                                "type": "Property",
+                                                                "text": "key",
+                                                                "children": [
+                                                                    {
+                                                                        "type": "Identifier",
+                                                                        "text": "key",
+                                                                        "children": []
+                                                                    },
+                                                                    {
+                                                                        "type": "Identifier",
+                                                                        "text": "key",
+                                                                        "children": []
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "Property",
+                                                                "text": "name",
+                                                                "children": [
+                                                                    {
+                                                                        "type": "Identifier",
+                                                                        "text": "name",
+                                                                        "children": []
+                                                                    },
+                                                                    {
+                                                                        "type": "Identifier",
+                                                                        "text": "name",
+                                                                        "children": []
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "list",
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-for=\"([a,,b], c) in list\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-for=\"([a,,b], c) in list\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-for=\"([a,,b], c) in list\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-for",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-for",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"([a,,b], c) in list\"",
+                                        "children": [
+                                            {
+                                                "type": "VForExpression",
+                                                "text": "([a,,b], c) in list",
+                                                "children": [
+                                                    {
+                                                        "type": "ArrayPattern",
+                                                        "text": "[a,,b]",
+                                                        "children": [
+                                                            {
+                                                                "type": "Identifier",
+                                                                "text": "a",
+                                                                "children": []
+                                                            },
+                                                            {
+                                                                "type": "Identifier",
+                                                                "text": "b",
+                                                                "children": []
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "c",
+                                                        "children": []
+                                                    },
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "list",
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-for=\"[a,b] of list\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-for=\"[a,b] of list\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-for=\"[a,b] of list\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-for",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-for",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"[a,b] of list\"",
+                                        "children": [
+                                            {
+                                                "type": "VForExpression",
+                                                "text": "[a,b] of list",
+                                                "children": [
+                                                    {
+                                                        "type": "ArrayPattern",
+                                                        "text": "[a,b]",
+                                                        "children": [
+                                                            {
+                                                                "type": "Identifier",
+                                                                "text": "a",
+                                                                "children": []
+                                                            },
+                                                            {
+                                                                "type": "Identifier",
+                                                                "text": "b",
+                                                                "children": []
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "list",
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-for=\"{[z]:key=x,name} in list\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-for=\"{[z]:key=x,name} in list\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-for=\"{[z]:key=x,name} in list\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-for",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-for",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{[z]:key=x,name} in list\"",
+                                        "children": [
+                                            {
+                                                "type": "VForExpression",
+                                                "text": "{[z]:key=x,name} in list",
+                                                "children": [
+                                                    {
+                                                        "type": "ObjectPattern",
+                                                        "text": "{[z]:key=x,name}",
+                                                        "children": [
+                                                            {
+                                                                "type": "Property",
+                                                                "text": "[z]:key=x",
+                                                                "children": [
+                                                                    {
+                                                                        "type": "Identifier",
+                                                                        "text": "z",
+                                                                        "children": []
+                                                                    },
+                                                                    {
+                                                                        "type": "AssignmentPattern",
+                                                                        "text": "key=x",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "Identifier",
+                                                                                "text": "key",
+                                                                                "children": []
+                                                                            },
+                                                                            {
+                                                                                "type": "Identifier",
+                                                                                "text": "x",
+                                                                                "children": []
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "Property",
+                                                                "text": "name",
+                                                                "children": [
+                                                                    {
+                                                                        "type": "Identifier",
+                                                                        "text": "name",
+                                                                        "children": []
+                                                                    },
+                                                                    {
+                                                                        "type": "Identifier",
+                                                                        "text": "name",
+                                                                        "children": []
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "list",
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n",
+                "children": []
+            },
+            {
+                "type": "VEndTag",
+                "text": "</template>",
+                "children": []
+            }
+        ]
+    }
+]

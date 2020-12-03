@@ -1,6 +1,6 @@
 /**
  * @fileoverview Define the cursor which iterates tokens and comments in reverse.
- * @author Toru Nagashima
+ * 
  */
 import {Token} from "../../../ast"
 import {getLastIndex, search} from "../utils"

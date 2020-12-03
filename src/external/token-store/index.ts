@@ -1,6 +1,6 @@
 /**
  * @fileoverview Object to handle access and retrieval of tokens.
- * @author Brandon Mills
+ * 
  */
 import assert from "assert"
 import {HasLocation, Token} from "../../ast"

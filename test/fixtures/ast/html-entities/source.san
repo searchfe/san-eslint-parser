@@ -1,0 +1,4 @@
+<template>
+    <div s-if="a &amp;&amp; b">{{a &amp;&amp; b}}</div>
+    &
+</template>
