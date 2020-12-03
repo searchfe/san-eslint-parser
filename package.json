@@ -73,6 +73,11 @@
     "watch:update-ast": "wait-on index.js && warun index.js \"test/fixtures/ast/*/*.san\" -- node scripts/update-fixtures-ast.js",
     "watch:coverage-report": "wait-on coverage/lcov-report/index.html && opener coverage/lcov-report/index.html"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/searchfe/san-eslint-parser"
+  },
+  "homepage": "https://github.com/searchfe/san-eslint-parser/blob/master/README.md",
   "keywords": [],
   "author": "searchfe",
   "license": "MIT"
