@@ -9,6 +9,7 @@ import { LocationCalculator } from "./common/location-calculator"
 import { HTMLParser, HTMLTokenizer } from "./html"
 import { parseScript, parseScriptElement } from "./script"
 import * as services from "./parser-services"
+import decomment from "decomment"
 
 const STARTS_WITH_LT = /^\s*</u
 
@@ -30,6 +31,15 @@ function isVueFile(code: string, options: any): boolean {
  */
 function isTemplateElement(node: AST.VNode): node is AST.VElement {
     return node.type === "VElement" && node.name === "template"
+}
+
+/**
+ * Check whether the node is a element, for .js and .ts file.
+ * @param node The node to check.
+ * @returns `true` if the node is a `<any-tag>` element.
+ */
+function isElement(node: AST.VNode): node is AST.VElement {
+    return node.type === "VElement"
 }
 
 /**
@@ -92,8 +102,26 @@ export function parseForESLint(
     let result: AST.ESLintExtendedProgram
     let document: AST.VDocumentFragment | null
     if (!isVueFile(code, options)) {
+        const noCommentCode = decomment(code, {
+            safe: true,
+            space: true,
+        })
+        const tokenizer = new HTMLTokenizer(noCommentCode)
+        const rootAST = new HTMLParser(tokenizer, options).parse()
+        const rootNode = rootAST.children.find(isElement)
         result = parseScript(code, options)
-        document = null
+        if (rootNode) {
+            const concreteInfo = {
+                tokens: rootAST.tokens,
+                comments: rootAST.comments,
+                errors: rootAST.errors,
+            }
+            const templateBody = Object.assign(rootNode, concreteInfo)
+            result.ast.templateBody = templateBody
+            document = rootAST
+        } else {
+            document = null
+        }
     } else {
         const skipParsingScript = options.parser === false
         const tokenizer = new HTMLTokenizer(code)
