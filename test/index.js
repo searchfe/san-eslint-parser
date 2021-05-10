@@ -107,6 +107,46 @@ describe("Basic tests", () => {
         })
     })
 
+    describe("About fixtures/sanJs.js", () => {
+        it("should notify no error", () => {
+            const cli = new CLIEngine({
+                cwd: FIXTURE_DIR,
+                envs: ["es6", "node"],
+                parser: PARSER_PATH,
+                parserOptions: {
+                    parser: "babel-eslint",
+                    sourceType: "module",
+                },
+                rules: { semi: "error" },
+                useEslintrc: false,
+            })
+            const report = cli.executeOnFiles(["sanJs.js"])
+            const messages = report.results[0].messages
+
+            assert(messages.length === 0)
+        })
+    })
+
+    describe("About fixtures/sanTs.ts", () => {
+        it("should notify no error", () => {
+            const cli = new CLIEngine({
+                cwd: FIXTURE_DIR,
+                envs: ["es6", "node"],
+                parser: PARSER_PATH,
+                parserOptions: {
+                    parser: "@typescript-eslint/parser",
+                    sourceType: "module",
+                },
+                rules: { semi: "error" },
+                useEslintrc: false,
+            })
+            const report = cli.executeOnFiles(["sanTs.ts"])
+            const messages = report.results[0].messages
+
+            assert(messages.length === 0)
+        })
+    })
+
     describe("About fixtures/no-script.san", () => {
         it("should notify no error", () => {
             const cli = new CLIEngine({
