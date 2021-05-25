@@ -34,15 +34,6 @@ function isTemplateElement(node: AST.VNode): node is AST.VElement {
 }
 
 /**
- * Check whether the node is a element, for .js and .ts file.
- * @param node The node to check.
- * @returns `true` if the node is a `<any-tag>` element.
- */
-function isElement(node: AST.VNode): node is AST.VElement {
-    return node.type === "VElement"
-}
-
-/**
  * Check whether the node is a `<script>` element.
  * @param node The node to check.
  * @returns `true` if the node is a `<script>` element.
@@ -105,19 +96,15 @@ export function parseForESLint(
         const noCommentCode = decomment(code, {
             safe: true,
             space: true,
+            // @ts-ignore
+            tolerant: true,
         })
         const tokenizer = new HTMLTokenizer(noCommentCode)
         const rootAST = new HTMLParser(tokenizer, options).parse()
-        const rootNode = rootAST.children.find(isElement)
         result = parseScript(code, options)
-        if (rootNode) {
-            const concreteInfo = {
-                tokens: rootAST.tokens,
-                comments: rootAST.comments,
-                errors: rootAST.errors,
-            }
-            const templateBody = Object.assign(rootNode, concreteInfo)
-            result.ast.templateBody = templateBody
+        if (rootAST) {
+            // @ts-ignore
+            result.ast.templateBody = rootAST
             document = rootAST
         } else {
             document = null
