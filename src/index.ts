@@ -8,8 +8,8 @@ import * as AST from "./ast"
 import { LocationCalculator } from "./common/location-calculator"
 import { HTMLParser, HTMLTokenizer } from "./html"
 import { parseScript, parseScriptElement } from "./script"
+import { getTemplateRawData, fixLocation } from "./template"
 import * as services from "./parser-services"
-import decomment from "decomment"
 
 const STARTS_WITH_LT = /^\s*</u
 
@@ -93,22 +93,22 @@ export function parseForESLint(
     let result: AST.ESLintExtendedProgram
     let document: AST.VDocumentFragment | null
     if (!isVueFile(code, options)) {
-        const noCommentCode = decomment(code, {
-            safe: true,
-            space: true,
-            // @ts-ignore
-            tolerant: true,
-        })
-        const tokenizer = new HTMLTokenizer(noCommentCode)
-        const rootAST = new HTMLParser(tokenizer, options).parse()
         result = parseScript(code, options)
-        if (rootAST) {
-            // @ts-ignore
-            result.ast.templateBody = rootAST
-            document = rootAST
-        } else {
-            document = null
+        const {
+            templateRaw,
+            templateRawLoc,
+            templateRawOffset,
+        } = getTemplateRawData(result, code)
+        if (templateRaw) {
+            const tokenizer = new HTMLTokenizer(templateRaw)
+            tokenizer.expressionEnabled = true
+            const rootAST = new HTMLParser(tokenizer, options).parse()
+            fixLocation(rootAST, templateRawLoc, templateRawOffset)
+            if (rootAST) {
+                result.ast.templateBody = rootAST as any
+            }
         }
+        document = null
     } else {
         const skipParsingScript = options.parser === false
         const tokenizer = new HTMLTokenizer(code)

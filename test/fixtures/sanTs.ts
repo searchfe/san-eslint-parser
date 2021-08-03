@@ -1,14 +1,10 @@
-declare namespace san {
-    class Component {}
-}
-
 let text = 'test';
-class Test extends san.Component {
+class Test {
     template = `
         <video
             on-loadeddata="onClick"
             on-xxx="onClick"
-            class="${xxxx}"
+            class="${text}"
             src="xxx"
         ></video>
     `;

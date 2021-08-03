@@ -1,11 +1,13 @@
 # san-eslint-parser
 
-The ESLint custom parser for `.san` files.
+The ESLint custom parser for `.san/.ts/.js` files.
 Inspired by [vue-eslint-parser](https://github.com/vuejs/vue-eslint-parser)
 
 ## ⤴️ Motivation
 
 This parser allows us to lint the `<template>` of `.san` files. We can make mistakes easily on `<template>` if we use complex directives and expressions in the template. This parser and the rules of [eslint-plugin-san] would catch some of the mistakes.
+
+Also, This parser allows us to lint the first `template` class property or object property of `.ts/.js` files, that is to say you can only allowed to write one san component in every single `.ts/.js` file.
 
 ## 💿 Installation
 
