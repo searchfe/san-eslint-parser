@@ -80,14 +80,16 @@ function getTree(source) {
     linter.defineRule("maketree", ruleContext =>
         ruleContext.parserServices.defineTemplateBodyVisitor({
             "*"(node) {
-                stack.push(current)
-                current.children.push(
-                    (current = {
-                        type: node.type,
-                        text: source.slice(node.range[0], node.range[1]),
-                        children: [],
-                    })
-                )
+                if (node.range) {
+                    stack.push(current)
+                    current.children.push(
+                        (current = {
+                            type: node.type,
+                            text: source.slice(node.range[0], node.range[1]),
+                            children: [],
+                        })
+                    )
+                }
             },
             "*:exit"() {
                 current = stack.pop()

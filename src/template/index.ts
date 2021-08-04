@@ -818,6 +818,12 @@ export function resolveReferences(container: VExpressionContainer): void {
     }
 }
 
+interface TemplateData {
+    templateRaw: string
+    templateRawLoc: LocationRange
+    templateRawOffset: number
+}
+
 /**
  * Get the raw data from the script template in ts/js file.
  *
@@ -828,19 +834,8 @@ export function resolveReferences(container: VExpressionContainer): void {
 export function getTemplateRawData(
     result: ESLintExtendedProgram,
     code: string,
-) {
-    let templateRaw = ""
-    let templateRawLoc: LocationRange = {
-        start: {
-            line: 0,
-            column: 0,
-        },
-        end: {
-            line: 0,
-            column: 0,
-        },
-    }
-    let templateRawOffset = 0
+): TemplateData[] {
+    const templateData: TemplateData[] = []
     estraverse.traverse(result.ast as any, {
         // https://github.com/estools/estraverse/issues/32
         fallback: "iteration",
@@ -855,6 +850,18 @@ export function getTemplateRawData(
                     node.value.loc &&
                     Array.isArray(node.value.range)
                 ) {
+                    let templateRaw = ""
+                    let templateRawLoc: LocationRange = {
+                        start: {
+                            line: 0,
+                            column: 0,
+                        },
+                        end: {
+                            line: 0,
+                            column: 0,
+                        },
+                    }
+                    let templateRawOffset = 0
                     const start: number = node.value.range[0]
                     const end: number = node.value.range[1]
                     templateRawLoc = {
@@ -863,16 +870,16 @@ export function getTemplateRawData(
                     }
                     templateRawOffset = node.value.range[0]
                     templateRaw = code.slice(start + 1, end - 1)
+                    templateData.push({
+                        templateRaw,
+                        templateRawLoc,
+                        templateRawOffset,
+                    })
                 }
-                this.break()
             }
         },
     })
-    return {
-        templateRaw,
-        templateRawLoc,
-        templateRawOffset,
-    }
+    return templateData
 }
 
 /**

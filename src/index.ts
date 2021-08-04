@@ -94,19 +94,20 @@ export function parseForESLint(
     let document: AST.VDocumentFragment | null
     if (!isVueFile(code, options)) {
         result = parseScript(code, options)
-        const {
-            templateRaw,
-            templateRawLoc,
-            templateRawOffset,
-        } = getTemplateRawData(result, code)
-        if (templateRaw) {
-            const tokenizer = new HTMLTokenizer(templateRaw)
-            tokenizer.expressionEnabled = true
-            const rootAST = new HTMLParser(tokenizer, options).parse()
-            fixLocation(rootAST, templateRawLoc, templateRawOffset)
-            if (rootAST) {
-                result.ast.templateBody = rootAST as any
+        const templateData = getTemplateRawData(result, code)
+        const templateBody = []
+        for (const item of templateData) {
+            const { templateRaw, templateRawLoc, templateRawOffset } = item
+            if (templateRaw) {
+                const tokenizer = new HTMLTokenizer(templateRaw)
+                tokenizer.expressionEnabled = true
+                const rootAST = new HTMLParser(tokenizer, options).parse()
+                fixLocation(rootAST, templateRawLoc, templateRawOffset)
+                templateBody.push(rootAST)
             }
+        }
+        if (templateBody) {
+            result.ast.templateBody = templateBody as any
         }
         document = null
     } else {

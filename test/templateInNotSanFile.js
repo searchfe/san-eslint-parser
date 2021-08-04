@@ -62,7 +62,7 @@ describe("templateBody in class component", () => {
 
     describe("ast.templateBody", () => {
         it("should return all tokens (except comments) in the template.", () => {
-            const actual = tokens.getTokens(ast.templateBody).map(toValue)
+            const actual = tokens.getTokens(ast.templateBody[0]).map(toValue)
             assert.deepStrictEqual(actual, [
                 "div",
                 "s-for",
@@ -83,7 +83,7 @@ describe("templateBody in class component", () => {
 
         it("should return all tokens (include comments) in the template if you give {includeComments: true} option.", () => {
             const actual = tokens
-                .getTokens(ast.templateBody, { includeComments: true })
+                .getTokens(ast.templateBody[0], { includeComments: true })
                 .map(toValue)
             assert.deepStrictEqual(actual, [
                 "comment",
@@ -107,7 +107,7 @@ describe("templateBody in class component", () => {
 
     describe("ast.templateBody.children[0] (VElement)", () => {
         it("should return a element token.", () => {
-            const node = ast.templateBody.children[0]
+            const node = ast.templateBody[0].children[0]
             const actual = tokens.getTokens(node).map(toValue)
 
             assert.deepStrictEqual(actual, [
@@ -131,7 +131,7 @@ describe("templateBody in class component", () => {
 
     describe("ast.templateBody.children[0].startTag (VStartTag)", () => {
         it("should return all tokens in the tag.", () => {
-            const node = ast.templateBody.children[0].startTag
+            const node = ast.templateBody[0].children[0].startTag
             const actual = tokens.getTokens(node).map(toValue)
 
             assert.deepStrictEqual(actual, [
@@ -150,7 +150,7 @@ describe("templateBody in class component", () => {
 
     describe("ast.templateBody.children[0].startTag.attributes[0] (VAttribute)", () => {
         it("should return all tokens in the attribute.", () => {
-            const node = ast.templateBody.children[0].startTag.attributes[0]
+            const node = ast.templateBody[0].children[0].startTag.attributes[0]
             const actual = tokens.getTokens(node).map(toValue)
 
             assert.deepStrictEqual(actual, [
@@ -167,7 +167,7 @@ describe("templateBody in class component", () => {
 
     describe("ast.templateBody.children[0].endTag (VEndTag)", () => {
         it("should return all tokens in the tag.", () => {
-            const node = ast.templateBody.children[0].endTag
+            const node = ast.templateBody[0].children[0].endTag
             const actual = tokens.getTokens(node).map(toValue)
 
             assert.deepStrictEqual(actual, ["div", ">"])
@@ -176,7 +176,7 @@ describe("templateBody in class component", () => {
 
     describe("ast.templateBody location and range", () => {
         it("should return the right range and locations in root node", () => {
-            const node = ast.templateBody
+            const node = ast.templateBody[0]
             const loc = node.loc
             const range = node.range
 
@@ -193,7 +193,7 @@ describe("templateBody in class component", () => {
             assert.deepStrictEqual(range, [33, 87])
         })
         it("should return the right range and locations in children[0] (VElement<div>)", () => {
-            const node = ast.templateBody.children[0]
+            const node = ast.templateBody[0].children[0]
             const loc = node.loc
             const range = node.range
 
@@ -211,7 +211,7 @@ describe("templateBody in class component", () => {
         })
 
         it("should return the right range and locations in children[0][0] (VExpressionContainer<s-for>)", () => {
-            const node = ast.templateBody.children[0].children[0]
+            const node = ast.templateBody[0].children[0].children[0]
             const loc = node.loc
             const range = node.range
 
@@ -229,7 +229,7 @@ describe("templateBody in class component", () => {
         })
 
         it("should return the right range and locations in children[0][0].expression (Identifier)", () => {
-            const node = ast.templateBody.children[0].children[0].expression
+            const node = ast.templateBody[0].children[0].children[0].expression
             const loc = node.loc
             const range = node.range
 
@@ -248,7 +248,7 @@ describe("templateBody in class component", () => {
         })
 
         it("should return the right range and locations in comment (HTMLComment)", () => {
-            const node = ast.templateBody.comments[0]
+            const node = ast.templateBody[0].comments[0]
             const loc = node.loc
             const range = node.range
 
@@ -268,7 +268,7 @@ describe("templateBody in class component", () => {
 
     describe("ast.templateBody tokens", () => {
         it("should return all tokens.", () => {
-            const node = ast.templateBody.tokens
+            const node = ast.templateBody[0].tokens
 
             assert.deepStrictEqual(node, [
                 {
@@ -502,7 +502,7 @@ describe("templateBody in san.defineComponent", () => {
 
     describe("ast.templateBody tokens", () => {
         it("should return all tokens.", () => {
-            const node = ast.templateBody.tokens
+            const node = ast.templateBody[0].tokens
 
             assert.deepStrictEqual(node, [
                 {
@@ -738,7 +738,7 @@ describe("templateBody in object", () => {
 
     describe("ast.templateBody", () => {
         it("should return all tokens (except comments) in the template.", () => {
-            const actual = tokens.getTokens(ast.templateBody).map(toValue)
+            const actual = tokens.getTokens(ast.templateBody[0]).map(toValue)
             assert.deepStrictEqual(actual, [
                 "div",
                 "s-for",
@@ -759,71 +759,7 @@ describe("templateBody in object", () => {
 
         it("should return all tokens (include comments) in the template if you give {includeComments: true} option.", () => {
             const actual = tokens
-                .getTokens(ast.templateBody, { includeComments: true })
-                .map(toValue)
-            assert.deepStrictEqual(actual, [
-                "comment",
-                "div",
-                "s-for",
-                "=",
-                "'",
-                "item",
-                "in",
-                "list",
-                "'",
-                ">",
-                "{{",
-                "item",
-                "}}",
-                "div",
-                ">",
-            ])
-        })
-    })
-})
-
-describe("only one templateBody", () => {
-    const code = `const a = {
-        template: "<!--comment--><div s-for='item in list'>{{item}}</div>"
-    };const b = {
-        template: "<!--comment--><span s-for='item in list'>{{item}}</span>"
-    }`
-    let ast = null
-    let tokens = null
-
-    before(() => {
-        const result = parse(
-            code,
-            Object.assign({ filePath: "test.ts" }, PARSER_OPTIONS)
-        )
-        ast = result.ast
-        tokens = result.services.getTemplateBodyTokenStore()
-    })
-
-    describe("ast.templateBody", () => {
-        it("should return all tokens (except comments) in the template.", () => {
-            const actual = tokens.getTokens(ast.templateBody).map(toValue)
-            assert.deepStrictEqual(actual, [
-                "div",
-                "s-for",
-                "=",
-                "'",
-                "item",
-                "in",
-                "list",
-                "'",
-                ">",
-                "{{",
-                "item",
-                "}}",
-                "div",
-                ">",
-            ])
-        })
-
-        it("should return all tokens (include comments) in the template if you give {includeComments: true} option.", () => {
-            const actual = tokens
-                .getTokens(ast.templateBody, { includeComments: true })
+                .getTokens(ast.templateBody[0], { includeComments: true })
                 .map(toValue)
             assert.deepStrictEqual(actual, [
                 "comment",

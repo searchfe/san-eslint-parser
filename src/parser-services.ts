@@ -11,6 +11,7 @@ import {
     ESLintProgram,
     VElement,
     VDocumentFragment,
+    Token,
 } from "./ast"
 
 //------------------------------------------------------------------------------
@@ -119,13 +120,32 @@ export function define(
          */
         getTemplateBodyTokenStore(): TokenStore {
             const ast = rootAST.templateBody
+            const tokens: Token[] = []
+            const comments: Token[] = []
+            if (Array.isArray(ast)) {
+                for (const templateBody of ast) {
+                    if (Array.isArray(templateBody.tokens)) {
+                        tokens.push(...templateBody.tokens)
+                    }
+                    if (Array.isArray(templateBody.comments)) {
+                        comments.push(...templateBody.comments)
+                    }
+                }
+            } else if (
+                ast &&
+                Array.isArray(ast.tokens) &&
+                Array.isArray(ast.comments)
+            ) {
+                tokens.push(...ast.tokens)
+                comments.push(...ast.comments)
+            }
             const key = ast || stores
             let store = stores.get(key)
 
             if (!store) {
                 store =
                     ast != null
-                        ? new TokenStore(ast.tokens, ast.comments)
+                        ? new TokenStore(tokens, comments)
                         : new TokenStore([], [])
                 stores.set(key, store)
             }
