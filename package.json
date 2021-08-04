@@ -19,13 +19,11 @@
     "esm": "^3.2.25",
     "espree": "^6.2.1",
     "esquery": "^1.0.1",
-    "estraverse": "^5.2.0",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@mysticatea/eslint-plugin": "^11.0.0",
     "@types/debug": "0.0.30",
-    "@types/estraverse": "^5.1.1",
     "@types/estree": "0.0.38",
     "@types/lodash": "^4.14.120",
     "@types/mocha": "^5.2.4",

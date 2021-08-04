@@ -1,6 +1,5 @@
 import sortedIndexBy from "lodash/sortedIndexBy"
 import sortedLastIndexBy from "lodash/sortedLastIndexBy"
-import estraverse from "estraverse"
 import {
     ESLintExpression,
     ParseError,
@@ -836,10 +835,8 @@ export function getTemplateRawData(
     code: string,
 ): TemplateData[] {
     const templateData: TemplateData[] = []
-    estraverse.traverse(result.ast as any, {
-        // https://github.com/estools/estraverse/issues/32
-        fallback: "iteration",
-        enter(node: any) {
+    traverseNodes(result.ast, {
+        enterNode(node: any) {
             if (
                 node &&
                 (node.type === "ClassProperty" || node.type === "Property") &&
@@ -877,6 +874,9 @@ export function getTemplateRawData(
                     })
                 }
             }
+        },
+        leaveNode() {
+            // Do nothing.
         },
     })
     return templateData
