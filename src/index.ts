@@ -106,7 +106,7 @@ export function parseForESLint(
                 templateBody.push(rootAST)
             }
         }
-        if (templateBody) {
+        if (templateBody.length !== 0) {
             result.ast.templateBody = templateBody as any
         }
         document = null
