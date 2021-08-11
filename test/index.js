@@ -147,6 +147,26 @@ describe("Basic tests", () => {
         })
     })
 
+    describe("About fixtures/noException.ts", () => {
+        it("should notify no error", () => {
+            const cli = new CLIEngine({
+                cwd: FIXTURE_DIR,
+                envs: ["es6", "node"],
+                parser: PARSER_PATH,
+                parserOptions: {
+                    parser: "@typescript-eslint/parser",
+                    sourceType: "module",
+                },
+                rules: { semi: "error" },
+                useEslintrc: false,
+            })
+            const report = cli.executeOnFiles(["noException.ts"])
+            const messages = report.results[0].messages
+
+            assert(messages.length === 0)
+        })
+    })
+
     describe("About fixtures/no-script.san", () => {
         it("should notify no error", () => {
             const cli = new CLIEngine({

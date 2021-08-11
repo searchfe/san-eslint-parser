@@ -1,9 +1,5 @@
-interface Data {
-    greeting: string
-}
-
 export default {
-    data(): Data {
+    data() {
         return {greeting: "Hello"}
     },
 }

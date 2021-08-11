@@ -18,6 +18,9 @@ import {
     VNode,
     VOnExpression,
     VSlotScopeExpression,
+    ESLintExtendedProgram,
+    traverseNodes,
+    LocationRange,
 } from "../ast"
 import { debug } from "../common/debug"
 import { LocationCalculator } from "../common/location-calculator"
@@ -811,5 +814,155 @@ export function resolveReferences(container: VExpressionContainer): void {
         for (const reference of container.references) {
             resolveReference(reference, element)
         }
+    }
+}
+
+interface TemplateData {
+    templateRaw: string
+    templateRawLoc: LocationRange
+    templateRawOffset: number
+}
+
+/**
+ * Get the raw data from the script template in ts/js file.
+ *
+ * @param result The ast of source code.
+ * @param code The source code.
+ * @returns The result of template data.
+ */
+export function getTemplateRawData(
+    result: ESLintExtendedProgram,
+    code: string,
+): TemplateData[] {
+    const templateData: TemplateData[] = []
+    traverseNodes(result.ast, {
+        enterNode(node: any) {
+            if (
+                node &&
+                (node.type === "ClassProperty" || node.type === "Property") &&
+                node.key.name === "template"
+            ) {
+                if (
+                    node.value &&
+                    node.value.loc &&
+                    Array.isArray(node.value.range)
+                ) {
+                    let templateRaw = ""
+                    let templateRawLoc: LocationRange = {
+                        start: {
+                            line: 0,
+                            column: 0,
+                        },
+                        end: {
+                            line: 0,
+                            column: 0,
+                        },
+                    }
+                    let templateRawOffset = 0
+                    const start: number = node.value.range[0]
+                    const end: number = node.value.range[1]
+                    templateRawLoc = {
+                        start: Object.assign({}, node.value.loc.start),
+                        end: Object.assign({}, node.value.loc.end),
+                    }
+                    templateRawOffset = node.value.range[0]
+                    templateRaw = code.slice(start + 1, end - 1)
+                    templateData.push({
+                        templateRaw,
+                        templateRawLoc,
+                        templateRawOffset,
+                    })
+                }
+            }
+        },
+        leaveNode() {
+            // Do nothing.
+        },
+    })
+    return templateData
+}
+
+/**
+ * Get location by offset loc
+ * @param loc current loc
+ * @param offsetLoc offset loc
+ * @returns fixed loc
+ */
+function getLoc(loc: LocationRange, offsetLoc: LocationRange) {
+    if (!offsetLoc) {
+        return loc
+    }
+    return {
+        start: {
+            line: loc.start.line + offsetLoc.start.line - 1,
+            column:
+                loc.start.line === 1
+                    ? loc.start.column + offsetLoc.start.column + 1
+                    : loc.start.column,
+        },
+        end: {
+            line: loc.end.line + offsetLoc.start.line - 1,
+            column:
+                loc.start.line === 1
+                    ? loc.end.column + offsetLoc.start.column + 1
+                    : loc.end.column,
+        },
+    }
+}
+
+/**
+ * fix tokens/comments/nodes in the root ast from source code in ts/js files
+ * @param rootAST root ast
+ * @param templateRawLoc location of template in source code
+ * @param templateRawOffset offset of template in source code
+ */
+export function fixLocation(
+    rootAST: VDocumentFragment,
+    templateRawLoc: LocationRange,
+    templateRawOffset: number,
+) {
+    traverseNodes(rootAST, {
+        enterNode(node) {
+            const range: number[] = node.range
+            node.range = [
+                templateRawOffset + range[0] + 1,
+                templateRawOffset + range[1] + 1,
+            ]
+            node.loc = getLoc(node.loc, templateRawLoc)
+        },
+        leaveNode() {
+            // Do nothing.
+        },
+    })
+    for (const token of rootAST.tokens || []) {
+        if (!token) {
+            continue
+        }
+        const range: number[] = token.range
+        token.range = [
+            templateRawOffset + range[0] + 1,
+            templateRawOffset + range[1] + 1,
+        ]
+        token.loc = getLoc(token.loc, templateRawLoc)
+    }
+    for (const comment of rootAST.comments || []) {
+        if (!comment) {
+            continue
+        }
+        const range: number[] = comment.range
+        comment.range = [
+            templateRawOffset + range[0] + 1,
+            templateRawOffset + range[1] + 1,
+        ]
+        comment.loc = getLoc(comment.loc, templateRawLoc)
+    }
+    for (const error of rootAST.errors || []) {
+        if (!error) {
+            continue
+        }
+        const { lineNumber, column } = error
+        error.lineNumber = lineNumber + templateRawLoc.start.line - 1
+        error.column =
+            lineNumber === 1 ? column + templateRawLoc.start.column + 1 : column
     }
 }
