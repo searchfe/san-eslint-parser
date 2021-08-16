@@ -527,22 +527,41 @@ function parseInterpolationAttributeValue(
 ) {
     const firstChar = code[node.range[0]]
     const quoted = firstChar === '"' || firstChar === "'"
-    const locationCalculator = globalLocationCalculator.getSubCalculatorAfter(
-        node.range[0] + (quoted ? 1 : 0),
-    )
-    const reg = /\{\{((?:.|\r?\n)+?)\}\}/gu
-    let matchedCode = reg.exec(node.value)
+    const delimiters = ["{{", "}}"]
     const result = []
-    let ast
-    while (matchedCode && matchedCode[1].trim()) {
-        ast = parseExpressionBody(
-            matchedCode[1],
+    const delimStart = delimiters[0]
+    const delimStartLen = delimStart.length
+    const delimEnd = delimiters[1]
+    const delimEndLen = delimEnd.length
+    let index = 0
+    while (1) {
+        const delimStartIndex = node.value.indexOf(delimStart, index)
+        let delimEndIndex = node.value.indexOf(delimEnd, index)
+        if (delimStartIndex === -1 || delimEndIndex < delimStartIndex) {
+            break
+        }
+
+        if (
+            node.value.indexOf(delimEnd, delimEndIndex + 1) ===
+            delimEndIndex + 1
+        ) {
+            delimEndIndex++
+        }
+
+        const relativeStartIndex = delimStartIndex + delimStartLen
+        const str = node.value.slice(relativeStartIndex, delimEndIndex)
+        const locationCalculator = globalLocationCalculator.getSubCalculatorAfter(
+            node.range[0] + (quoted ? 1 : 0) + relativeStartIndex,
+        )
+        const ast = parseExpressionBody(
+            str,
             locationCalculator,
             parserOptions,
             false,
         )
         result.push(ast)
-        matchedCode = reg.exec(node.value)
+
+        index = delimEndIndex + delimEndLen
     }
     return result
 }

@@ -6,6 +6,8 @@ rules:
   complexity:
     - error
     - max: 20
+  no-constant-condition:
+    - off
 
 overrides:
   - files: "typings/**"
