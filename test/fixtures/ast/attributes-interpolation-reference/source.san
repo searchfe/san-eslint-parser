@@ -1,0 +1,7 @@
+<template>
+    <div s-for="a in list1">
+        <div s-for="a in list2">
+            <div b="{{a}}"></div>
+        </div>
+    </div>
+</template>

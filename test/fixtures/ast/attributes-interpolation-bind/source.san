@@ -1,0 +1,4 @@
+<template>
+    <div s-bind="{{a}}"></div>
+    <div s-bind="{{{a: 1}}}"></div>
+</template>

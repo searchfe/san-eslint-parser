@@ -22,6 +22,7 @@ import { debug } from "../common/debug"
 import { LocationCalculator } from "../common/location-calculator"
 import {
     convertToDirective,
+    convertToInterpolation,
     processMustache,
     resolveReferences,
 } from "../template"
@@ -139,6 +140,19 @@ function propagateEndLocation(node: VDocumentFragment | VElement): void {
         node.range[1] = lastChild.range[1]
         node.loc.end = lastChild.loc.end
     }
+}
+
+/**
+ * Check if the string is a interpolation value
+ * @param node The VAttribute node.
+ */
+function isInterpolation(node: VAttribute) {
+    return (
+        !node.key.name.startsWith("s-") &&
+        node.value &&
+        typeof node.value.value === "string" &&
+        /\{\{((?:.|\r?\n)+?)\}\}/gu.test(node.value.value)
+    )
 }
 
 /**
@@ -319,7 +333,6 @@ export class Parser {
      * @param token The StartTag token to detect.
      * @returns The namespace of the new element.
      */
-    //eslint-disable-next-line complexity
     private detectNamespace(token: StartTag): Namespace {
         const name = token.name
         let ns = this.namespace
@@ -395,6 +408,16 @@ export class Parser {
     private processAttribute(node: VAttribute, namespace: Namespace): void {
         const tagName = node.parent.parent.name
         const attrName = node.key.name
+
+        if (isInterpolation(node)) {
+            convertToInterpolation(
+                this.text,
+                this.parserOptions,
+                this.locationCalculator,
+                node,
+            )
+            return
+        }
 
         if (
             (this.expressionEnabled ||
@@ -485,6 +508,14 @@ export class Parser {
                 }
                 if (attribute.value != null) {
                     resolveReferences(attribute.value)
+                }
+            }
+
+            if (attribute.interpolative) {
+                if (attribute.interpolativeValues != null) {
+                    for (const interpolativeValue of attribute.interpolativeValues) {
+                        resolveReferences(interpolativeValue)
+                    }
                 }
             }
         }

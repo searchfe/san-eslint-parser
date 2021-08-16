@@ -26,6 +26,7 @@ import { debug } from "../common/debug"
 import { LocationCalculator } from "../common/location-calculator"
 import {
     ExpressionParseResult,
+    parseExpressionBody,
     parseExpression,
     parseVForExpression,
     parseVOnExpression,
@@ -518,6 +519,43 @@ function insertError(
  * @param tagName The name of this tag.
  * @param directiveKey The key of this directive.
  */
+function parseInterpolationAttributeValue(
+    code: string,
+    parserOptions: any,
+    globalLocationCalculator: LocationCalculator,
+    node: VLiteral,
+) {
+    const firstChar = code[node.range[0]]
+    const quoted = firstChar === '"' || firstChar === "'"
+    const locationCalculator = globalLocationCalculator.getSubCalculatorAfter(
+        node.range[0] + (quoted ? 1 : 0),
+    )
+    const reg = /\{\{((?:.|\r?\n)+?)\}\}/gu
+    let matchedCode = reg.exec(node.value)
+    const result = []
+    let ast
+    while (matchedCode && matchedCode[1].trim()) {
+        ast = parseExpressionBody(
+            matchedCode[1],
+            locationCalculator,
+            parserOptions,
+            false,
+        )
+        result.push(ast)
+        matchedCode = reg.exec(node.value)
+    }
+    return result
+}
+
+/**
+ * Parse the given attribute value as an expression.
+ * @param code Whole source code text.
+ * @param parserOptions The parser options to parse expressions.
+ * @param globalLocationCalculator The location calculator to adjust the locations of nodes.
+ * @param node The attribute node to replace. This function modifies this node directly.
+ * @param tagName The name of this tag.
+ * @param directiveKey The key of this directive.
+ */
 function parseAttributeValue(
     code: string,
     parserOptions: any,
@@ -576,15 +614,56 @@ function parseAttributeValue(
             locationCalculator,
             parserOptions,
         )
-    } else if (directiveName === "bind") {
-        result = parseExpression(
-            node.value,
-            locationCalculator,
-            parserOptions,
-            { allowFilters: true },
-        )
     } else {
-        result = parseExpression(node.value, locationCalculator, parserOptions)
+        let codeWithoutInterpolation = node.value
+        let matched = false
+        let locationCalculatorInterpolation = locationCalculator
+        const match = /^\{\{((?:.|\r?\n)+?)\}\}$/gu.exec(
+            codeWithoutInterpolation,
+        )
+
+        if (match) {
+            matched = true
+            codeWithoutInterpolation = match[1]
+            locationCalculatorInterpolation = globalLocationCalculator.getSubCalculatorAfter(
+                node.range[0] + (quoted ? 1 : 0) + 2,
+            )
+        }
+        if (directiveName === "bind") {
+            result = parseExpression(
+                codeWithoutInterpolation,
+                locationCalculatorInterpolation,
+                parserOptions,
+                { allowFilters: true },
+            )
+        } else {
+            result = parseExpression(
+                codeWithoutInterpolation,
+                locationCalculatorInterpolation,
+                parserOptions,
+            )
+        }
+
+        if (matched) {
+            result.tokens.unshift(
+                createSimpleToken(
+                    "Punctuator",
+                    node.range[0] + 1,
+                    node.range[0] + 3,
+                    "{{",
+                    globalLocationCalculator,
+                ),
+            )
+            result.tokens.push(
+                createSimpleToken(
+                    "Punctuator",
+                    node.range[1] - 3,
+                    node.range[1] - 1,
+                    "}}",
+                    globalLocationCalculator,
+                ),
+            )
+        }
     }
 
     // Add the tokens of quotes.
@@ -641,6 +720,47 @@ export interface Mustache {
     value: string
     startToken: Token
     endToken: Token
+}
+
+/**
+ * Replace the given attribute by a directive.
+ * @param code Whole source code text.
+ * @param parserOptions The parser options to parse expressions.
+ * @param locationCalculator The location calculator to adjust the locations of nodes.
+ * @param node The attribute node to replace. This function modifies this node directly.
+ */
+export function convertToInterpolation(
+    code: string,
+    parserOptions: any,
+    locationCalculator: LocationCalculator,
+    node: VAttribute,
+): void {
+    const document = getOwnerDocument(node)
+    const interpolation = node
+    interpolation.interpolative = true
+    if (node.value == null) {
+        return
+    }
+    try {
+        const rets = parseInterpolationAttributeValue(
+            code,
+            parserOptions,
+            locationCalculator,
+            node.value,
+        )
+        interpolation.interpolativeValues = rets.map(ret => ({
+            parent: interpolation,
+            references: ret.references,
+            expression: ret.expression,
+        }))
+    } catch (err) {
+        debug("[template] Parse error: %s", err)
+        if (ParseError.isParseError(err)) {
+            insertError(document, err)
+        } else {
+            throw err
+        }
+    }
 }
 
 /**
