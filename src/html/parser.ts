@@ -333,7 +333,6 @@ export class Parser {
      * @param token The StartTag token to detect.
      * @returns The namespace of the new element.
      */
-    //eslint-disable-next-line complexity
     private detectNamespace(token: StartTag): Namespace {
         const name = token.name
         let ns = this.namespace
