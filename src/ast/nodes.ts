@@ -786,6 +786,8 @@ export interface VAttribute extends HasLocation, HasParent {
     directive: false
     key: VIdentifier
     value: VLiteral | null
+    interpolative?: boolean
+    interpolativeValues?: any[]
 }
 
 /**
@@ -797,6 +799,8 @@ export interface VDirective extends HasLocation, HasParent {
     directive: true
     key: VDirectiveKey
     value: VExpressionContainer | null
+    interpolative?: boolean
+    interpolativeValues?: any[]
 }
 
 /**

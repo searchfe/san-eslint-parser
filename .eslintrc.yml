@@ -9,6 +9,9 @@ overrides:
         - error
         - allowModules:
           - estree
+      complexity:
+        - error
+        - max: 20
 
 settings:
   node:

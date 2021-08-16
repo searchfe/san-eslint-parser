@@ -1,0 +1,140 @@
+[
+    {
+        "type": "VElement",
+        "text": "<template>\n    <div s-bind=\"{{a}}\"></div>\n    <div s-bind=\"{{{a: 1}}}\"></div>\n</template>",
+        "children": [
+            {
+                "type": "VStartTag",
+                "text": "<template>",
+                "children": []
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-bind=\"{{a}}\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-bind=\"{{a}}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-bind=\"{{a}}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-bind",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-bind",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{{a}}\"",
+                                        "children": [
+                                            {
+                                                "type": "Identifier",
+                                                "text": "a",
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-bind=\"{{{a: 1}}}\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-bind=\"{{{a: 1}}}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-bind=\"{{{a: 1}}}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-bind",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-bind",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{{{a: 1}}}\"",
+                                        "children": [
+                                            {
+                                                "type": "ObjectExpression",
+                                                "text": "{a: 1}",
+                                                "children": [
+                                                    {
+                                                        "type": "Property",
+                                                        "text": "a: 1",
+                                                        "children": [
+                                                            {
+                                                                "type": "Identifier",
+                                                                "text": "a",
+                                                                "children": []
+                                                            },
+                                                            {
+                                                                "type": "Literal",
+                                                                "text": "1",
+                                                                "children": []
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n",
+                "children": []
+            },
+            {
+                "type": "VEndTag",
+                "text": "</template>",
+                "children": []
+            }
+        ]
+    }
+]

@@ -350,7 +350,7 @@ function splitFilters(exp: string): string[] {
  * @param parserOptions The parser options.
  * @returns The result of parsing.
  */
-function parseExpressionBody(
+export function parseExpressionBody(
     code: string,
     locationCalculator: LocationCalculator,
     parserOptions: any,
