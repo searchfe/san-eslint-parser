@@ -605,21 +605,21 @@
                                                         {
                                                             "id": {
                                                                 "type": "Identifier",
-                                                                "start": 93,
-                                                                "end": 94,
+                                                                "start": 95,
+                                                                "end": 96,
                                                                 "loc": {
                                                                     "start": {
                                                                         "line": 4,
-                                                                        "column": 20
+                                                                        "column": 22
                                                                     },
                                                                     "end": {
                                                                         "line": 4,
-                                                                        "column": 21
+                                                                        "column": 23
                                                                     }
                                                                 },
                                                                 "range": [
-                                                                    93,
-                                                                    94
+                                                                    95,
+                                                                    96
                                                                 ],
                                                                 "name": "a"
                                                             },
@@ -628,21 +628,21 @@
                                                     ],
                                                     "expression": {
                                                         "type": "Identifier",
-                                                        "start": 93,
-                                                        "end": 94,
+                                                        "start": 95,
+                                                        "end": 96,
                                                         "loc": {
                                                             "start": {
                                                                 "line": 4,
-                                                                "column": 20
+                                                                "column": 22
                                                             },
                                                             "end": {
                                                                 "line": 4,
-                                                                "column": 21
+                                                                "column": 23
                                                             }
                                                         },
                                                         "range": [
-                                                            93,
-                                                            94
+                                                            95,
+                                                            96
                                                         ],
                                                         "name": "a"
                                                     }

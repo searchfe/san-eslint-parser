@@ -1,7 +1,7 @@
 [
     {
         "type": "VElement",
-        "text": "<template>\n    <div a=\"{{a}}\"></div>\n    <div a=\"{{{a: 1}}}\"></div>\n</template>",
+        "text": "<template>\n    <div a=\"{{a}}\"></div>\n    <div a=\"{{{a: 1}}}\"></div>\n    <div a=\"{{{a: 1}}} {{b}}\"></div>\n    <div style=\"{{b ? 'a' : 'b'}}\"></div>\n</template>",
         "children": [
             {
                 "type": "VStartTag",
@@ -71,6 +71,82 @@
                                     {
                                         "type": "VLiteral",
                                         "text": "\"{{{a: 1}}}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div a=\"{{{a: 1}}} {{b}}\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div a=\"{{{a: 1}}} {{b}}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "a=\"{{{a: 1}}} {{b}}\"",
+                                "children": [
+                                    {
+                                        "type": "VIdentifier",
+                                        "text": "a",
+                                        "children": []
+                                    },
+                                    {
+                                        "type": "VLiteral",
+                                        "text": "\"{{{a: 1}}} {{b}}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div style=\"{{b ? 'a' : 'b'}}\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div style=\"{{b ? 'a' : 'b'}}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "style=\"{{b ? 'a' : 'b'}}\"",
+                                "children": [
+                                    {
+                                        "type": "VIdentifier",
+                                        "text": "style",
+                                        "children": []
+                                    },
+                                    {
+                                        "type": "VLiteral",
+                                        "text": "\"{{b ? 'a' : 'b'}}\"",
                                         "children": []
                                     }
                                 ]

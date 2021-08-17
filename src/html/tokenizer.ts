@@ -4,7 +4,7 @@
  * See LICENSE file in root directory for full license.
  */
 
-/*eslint-disable no-constant-condition, no-param-reassign */
+/*eslint-disable no-param-reassign */
 
 import assert from "assert"
 import { debug } from "../common/debug"
@@ -1859,4 +1859,4 @@ export class Tokenizer {
     }
 }
 
-/*eslint-enable no-constant-condition, no-param-reassign */
+/*eslint-enable no-param-reassign */

@@ -1,4 +1,6 @@
 <template>
     <div a="{{a}}"></div>
     <div a="{{{a: 1}}}"></div>
+    <div a="{{{a: 1}}} {{b}}"></div>
+    <div style="{{b ? 'a' : 'b'}}"></div>
 </template>
