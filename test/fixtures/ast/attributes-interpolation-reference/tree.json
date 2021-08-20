@@ -42,7 +42,7 @@
                                         "children": [
                                             {
                                                 "type": "VForExpression",
-                                                "text": "a in list1",
+                                                "text": "\"a in list1",
                                                 "children": [
                                                     {
                                                         "type": "Identifier",
@@ -96,7 +96,7 @@
                                                 "children": [
                                                     {
                                                         "type": "VForExpression",
-                                                        "text": "a in list2",
+                                                        "text": "\"a in list2",
                                                         "children": [
                                                             {
                                                                 "type": "Identifier",

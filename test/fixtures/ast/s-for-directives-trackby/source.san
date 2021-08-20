@@ -1,0 +1,10 @@
+<template>
+    <div s-for="a in list"></div>
+    <div s-for="a, b in list"></div>
+    <div s-for="a, b in list   "></div>
+    <div s-for="a, b in list  trackby "></div>
+    <div s-for="a, b in list  trackby a.c"></div>
+    <div s-for="a, b in list  trackby a.c "></div>
+    <div s-for="a, b in list()  trackby a.c "></div>
+    <div s-for="a, b in list()  trackby a.c()"></div>
+</template>

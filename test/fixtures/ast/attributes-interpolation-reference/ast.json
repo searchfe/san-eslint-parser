@@ -188,13 +188,13 @@
                                 "expression": {
                                     "type": "VForExpression",
                                     "range": [
-                                        27,
+                                        26,
                                         37
                                     ],
                                     "loc": {
                                         "start": {
                                             "line": 2,
-                                            "column": 16
+                                            "column": 15
                                         },
                                         "end": {
                                             "line": 2,
@@ -403,13 +403,13 @@
                                         "expression": {
                                             "type": "VForExpression",
                                             "range": [
-                                                60,
+                                                59,
                                                 70
                                             ],
                                             "loc": {
                                                 "start": {
                                                     "line": 3,
-                                                    "column": 20
+                                                    "column": 19
                                                 },
                                                 "end": {
                                                     "line": 3,

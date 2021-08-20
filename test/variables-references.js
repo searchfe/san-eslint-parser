@@ -133,7 +133,7 @@ describe("[variables] elements", () => {
         })
     })
 
-    describe("which have s-for directive (with index)", () => {
+    describe("which not have s-for directive (with index)", () => {
         const code = '<template><div s-for="(a, i) in b"></div></template>'
         let ast = null
 
@@ -144,23 +144,13 @@ describe("[variables] elements", () => {
             ).ast
         })
 
-        it("should have references", () => {
+        it("should not have references", () => {
             const element = ast.templateBody.children[0]
             const directive = element.startTag.attributes[0]
 
             assert(element.type === "VElement")
-            assert(element.variables.length === 2)
-            assert(
-                element.variables[0].id === directive.value.expression.left[0]
-            )
-            assert(
-                element.variables[1].id === directive.value.expression.left[1]
-            )
-            assert(directive.value.references.length === 1)
-            assert(
-                directive.value.references[0].id ===
-                    directive.value.expression.right
-            )
+            assert(element.variables.length === 0)
+            assert(directive.value.references.length === 0)
         })
     })
 
@@ -220,22 +210,17 @@ describe("Variables of s-for and references", () => {
         mustacheReferences3 = ast.templateBody.children[1].references
     })
 
-    it("should have relationship each other", () => {
-        assert(variables.length === 1)
-        assert(vForReferences.length === 1)
+    it("should not have relationship each other", () => {
+        assert(variables.length === 0)
+        assert(vForReferences.length === 0)
         assert(vBindKeyReferences.length === 1)
         assert(mustacheReferences1.length === 2)
         assert(mustacheReferences2.length === 1)
         assert(mustacheReferences3.length === 1)
-        assert(variables[0].references.length === 3)
-        assert(variables[0].references[0] === vBindKeyReferences[0])
-        assert(variables[0].references[1] === mustacheReferences1[0])
-        assert(variables[0].references[2] === mustacheReferences2[0])
-        assert(vForReferences[0].variable === null)
-        assert(vBindKeyReferences[0].variable === variables[0])
-        assert(mustacheReferences1[0].variable === variables[0])
+        assert(vBindKeyReferences[0].variable !== variables[0])
+        assert(mustacheReferences1[0].variable !== variables[0])
         assert(mustacheReferences1[1].variable === null)
-        assert(mustacheReferences2[0].variable === variables[0])
+        assert(mustacheReferences2[0].variable !== variables[0])
         assert(mustacheReferences3[0].variable === null)
     })
 
@@ -348,13 +333,10 @@ describe("Variables of s-for and references of dynamic arguments", () => {
                 .references
     })
 
-    it("should have relationship each other", () => {
-        assert(variables.length === 1)
-        assert(vForReferences.length === 1)
+    it("should not have relationship each other", () => {
+        assert(variables.length === 0)
+        assert(vForReferences.length === 0)
         assert(vBindKeyReferences.length === 1)
-        assert(variables[0].references.length === 1)
-        assert(variables[0].references[0] === vBindKeyReferences[0])
-        assert(vForReferences[0].variable === null)
-        assert(vBindKeyReferences[0].variable === variables[0])
+        assert(vBindKeyReferences[0].variable !== variables[0])
     })
 })

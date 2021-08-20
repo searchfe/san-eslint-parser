@@ -31,6 +31,7 @@ import {
     VForExpression,
     VOnExpression,
     VSlotScopeExpression,
+    Walker,
 } from "../ast"
 import { debug } from "../common/debug"
 import { LocationCalculator } from "../common/location-calculator"
@@ -40,10 +41,6 @@ import {
 } from "./scope-analyzer"
 import { ESLintCustomParser, getEspree } from "./espree"
 
-// [1] = spacing before the aliases.
-// [2] = aliases.
-// [3] = all after the aliases.
-const ALIAS_PARENS = /^(\s*)\(([\s\S]+)\)(\s*(?:in|of)\b[\s\S]+)$/u
 const DUMMY_PARENT: any = {}
 
 // Like Vue, it judges whether it is a function expression or not.
@@ -104,9 +101,14 @@ function postprocess(
  * @returns The replaced code.
  */
 function replaceAliasParens(code: string): string {
-    const match = ALIAS_PARENS.exec(code)
+    const match = /^(\s*)([$0-9a-z_]+)(\s*,\s*(?:[$0-9a-z_]+))?(\s+in\s+.*)/giu.exec(
+        code,
+    )
     if (match != null) {
-        return `${match[1]}[${match[2]}]${match[3]}`
+        const delimiter = match[4].slice(1)
+        return match[3]
+            ? `${match[1]}[${match[2]}${match[3]}]${delimiter}`
+            : `${match[1]}[${match[2]}]${delimiter}`
     }
     return code
 }
@@ -209,6 +211,28 @@ function throwErrorAsAdjustingOutsideOfCode(
             err.message = "Unexpected end of expression."
         }
     }
+
+    throw err
+}
+
+/**
+ * throw error for s-for
+ * @param code s-for directive
+ * @param locationCalculator
+ */
+function throwErrorParseDirectiveSFor(
+    code: string,
+    locationCalculator: LocationCalculator,
+): never {
+    const loc = locationCalculator.getLocation(0)
+    const err = new ParseError(
+        `'${code}' is invalid directive for s-for`,
+        undefined,
+        0,
+        loc.line,
+        loc.column,
+    )
+    locationCalculator.fixErrorLocation(err)
 
     throw err
 }
@@ -720,18 +744,45 @@ export function parseVForExpression(
     locationCalculator: LocationCalculator,
     parserOptions: any,
 ): ExpressionParseResult<VForExpression> {
-    const processedCode = replaceAliasParens(code)
+    const walker = new Walker(code)
+    // 大小写 trackBy 都是支持的
+    // [1] item
+    // [3] index
+    // [5] trackBy all
+    // [6] trackBy value
+    const match = walker.match(
+        /^(\s*([$0-9a-z_]+)(\s*,\s*([$0-9a-z_]+))?\s+in\s+([^\s]+))(\s+\btrackby\b(\s+.*)?)?/giu,
+        true,
+    )
+    if (!match) {
+        return throwErrorParseDirectiveSFor(code, locationCalculator)
+    }
+    let codeNoTrackBy = code
+    //  check trackBy
+    if (match[1] && match[6]) {
+        if (
+            match[7] &&
+            match[7].trim() &&
+            !/\s*([$0-9a-z_]+)/giu.test(match[7])
+        ) {
+            return throwErrorParseDirectiveSFor(code, locationCalculator)
+        }
+        codeNoTrackBy = match[1]
+    }
+
+    const processedCode = replaceAliasParens(codeNoTrackBy)
     debug('[script] parse s-for expression: "for(%s);"', processedCode)
 
-    if (code.trim() === "") {
+    if (codeNoTrackBy.trim() === "") {
         throwEmptyError(locationCalculator, "'<alias> in <expression>'")
     }
 
     try {
-        const replaced = processedCode !== code
+        const replaced = processedCode !== codeNoTrackBy
+        // length of 'for(let [' is 9, otherwise will casue endless loop
         const ast = parseScriptFragment(
             `for(let ${processedCode});`,
-            locationCalculator.getSubCalculatorAfter(-8),
+            locationCalculator.getSubCalculatorAfter(-9),
             parserOptions,
         ).ast
         const tokens = ast.tokens || []
@@ -769,24 +820,38 @@ export function parseVForExpression(
         tokens.shift()
         tokens.pop()
         tokens.pop()
-
-        // Restore parentheses from array brackets.
-        if (replaced) {
-            const closeOffset = statement.left.range[1] - 1
-            const open = tokens[0]
-            const close = tokens.find(t => t.range[0] === closeOffset)
-
-            if (open != null) {
-                open.value = "("
-            }
-            if (close != null) {
-                close.value = ")"
-            }
+        if (match[6]) {
+            const offset = match[6].length
+            const startIndex = lastToken.range[1]
+            tokens.push({
+                type: "Literal",
+                range: [startIndex, startIndex + offset],
+                loc: {
+                    start: {
+                        line: lastToken.loc.end.line,
+                        column: lastToken.loc.end.column,
+                    },
+                    end: {
+                        line: lastToken.loc.end.line,
+                        column: lastToken.loc.end.column + offset,
+                    },
+                },
+                value: match[6],
+            })
         }
 
+        // remove '[' & ']' token
+        const closeOffset = statement.left.range[1] - 1
+        const closeIndex = tokens.findIndex(t => t.range[0] === closeOffset)
+        tokens.splice(closeIndex, 1)
+        tokens.shift()
         return { expression, tokens, comments, references, variables }
     } catch (err) {
-        return throwErrorAsAdjustingOutsideOfCode(err, code, locationCalculator)
+        return throwErrorAsAdjustingOutsideOfCode(
+            err,
+            codeNoTrackBy,
+            locationCalculator,
+        )
     }
 }
 

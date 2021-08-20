@@ -1,7 +1,7 @@
 [
     {
         "type": "VElement",
-        "text": "<template>\n    {{a + }}\n    <div s-for=\"abc\"></div>\n    <div :foo=\"abc + (1\"></div>\n    <div @click=\"abc('hello'\"></div>\n    <div on-click=\"abc('hello'\"></div>\n</template>",
+        "text": "<template>\n    {{a + }}\n    <div s-for=\"abc\"></div>\n    <div s-for=\"a, in list()\"></div>\n    <div s-for=\", b in list()\"></div>\n    <div s-for=\"(a, b) in list()  trackby a.c()\"></div>\n    <div s-for=\"a, b in list()  trackby ()\"></div>\n    <div :foo=\"abc + (1\"></div>\n    <div @click=\"abc('hello'\"></div>\n    <div on-click=\"abc('hello'\"></div>\n</template>",
         "children": [
             {
                 "type": "VStartTag",
@@ -49,6 +49,182 @@
                                     {
                                         "type": "VExpressionContainer",
                                         "text": "\"abc\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-for=\"a, in list()\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-for=\"a, in list()\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-for=\"a, in list()\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-for",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-for",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"a, in list()\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-for=\", b in list()\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-for=\", b in list()\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-for=\", b in list()\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-for",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-for",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\", b in list()\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-for=\"(a, b) in list()  trackby a.c()\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-for=\"(a, b) in list()  trackby a.c()\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-for=\"(a, b) in list()  trackby a.c()\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-for",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-for",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"(a, b) in list()  trackby a.c()\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-for=\"a, b in list()  trackby ()\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-for=\"a, b in list()  trackby ()\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-for=\"a, b in list()  trackby ()\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-for",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-for",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"a, b in list()  trackby ()\"",
                                         "children": []
                                     }
                                 ]

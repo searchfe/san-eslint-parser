@@ -1,6 +1,10 @@
 <template>
     {{a + }}
     <div s-for="abc"></div>
+    <div s-for="a, in list()"></div>
+    <div s-for=", b in list()"></div>
+    <div s-for="(a, b) in list()  trackby a.c()"></div>
+    <div s-for="a, b in list()  trackby ()"></div>
     <div :foo="abc + (1"></div>
     <div @click="abc('hello'"></div>
     <div on-click="abc('hello'"></div>

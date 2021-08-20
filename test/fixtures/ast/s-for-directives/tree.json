@@ -42,7 +42,7 @@
                                         "children": [
                                             {
                                                 "type": "VForExpression",
-                                                "text": "a in list",
+                                                "text": "\"a in list",
                                                 "children": [
                                                     {
                                                         "type": "Identifier",
@@ -100,34 +100,7 @@
                                     {
                                         "type": "VExpressionContainer",
                                         "text": "\"(a, b, c) in list\"",
-                                        "children": [
-                                            {
-                                                "type": "VForExpression",
-                                                "text": "(a, b, c) in list",
-                                                "children": [
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "a",
-                                                        "children": []
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "b",
-                                                        "children": []
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "c",
-                                                        "children": []
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "list",
-                                                        "children": []
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "children": []
                                     }
                                 ]
                             }
@@ -171,24 +144,7 @@
                                     {
                                         "type": "VExpressionContainer",
                                         "text": "\"a of list\"",
-                                        "children": [
-                                            {
-                                                "type": "VForExpression",
-                                                "text": "a of list",
-                                                "children": [
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "a",
-                                                        "children": []
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "list",
-                                                        "children": []
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "children": []
                                     }
                                 ]
                             }
@@ -232,34 +188,7 @@
                                     {
                                         "type": "VExpressionContainer",
                                         "text": "\"(a, b, c) of list\"",
-                                        "children": [
-                                            {
-                                                "type": "VForExpression",
-                                                "text": "(a, b, c) of list",
-                                                "children": [
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "a",
-                                                        "children": []
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "b",
-                                                        "children": []
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "c",
-                                                        "children": []
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "list",
-                                                        "children": []
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "children": []
                                     }
                                 ]
                             }

@@ -53,29 +53,7 @@
                                             {
                                                 "type": "VExpressionContainer",
                                                 "text": "\"(a,,b) in list\"",
-                                                "children": [
-                                                    {
-                                                        "type": "VForExpression",
-                                                        "text": "(a,,b) in list",
-                                                        "children": [
-                                                            {
-                                                                "type": "Identifier",
-                                                                "text": "a",
-                                                                "children": []
-                                                            },
-                                                            {
-                                                                "type": "Identifier",
-                                                                "text": "b",
-                                                                "children": []
-                                                            },
-                                                            {
-                                                                "type": "Identifier",
-                                                                "text": "list",
-                                                                "children": []
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
+                                                "children": []
                                             }
                                         ]
                                     }
