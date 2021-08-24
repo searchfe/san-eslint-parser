@@ -93,10 +93,20 @@ export function define(
                         const generator = new NodeEventGenerator(
                             emitter as EventEmitter,
                         )
-                        traverseNodes(
-                            rootAST.templateBody as VElement,
-                            generator,
-                        )
+
+                        if (Array.isArray(rootAST.templateBody)) {
+                            for (const templateBody of rootAST.templateBody) {
+                                traverseNodes(
+                                    templateBody as VElement,
+                                    generator,
+                                )
+                            }
+                        } else {
+                            traverseNodes(
+                                rootAST.templateBody as VElement,
+                                generator,
+                            )
+                        }
                     } finally {
                         // eslint-disable-next-line @mysticatea/ts/ban-ts-ignore
                         // @ts-ignore

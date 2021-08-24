@@ -628,6 +628,7 @@ function parseAttributeValue(
         directiveName === "slot-scope" ||
         (tagName === "template" && directiveName === "scope")
     ) {
+        // TODO: remove
         result = parseSlotScopeExpression(
             node.value,
             locationCalculator,
@@ -960,6 +961,8 @@ interface TemplateData {
     templateRaw: string
     templateRawLoc: LocationRange
     templateRawOffset: number
+    templateLoc: LocationRange
+    templateRange: [number, number]
 }
 
 /**
@@ -998,6 +1001,17 @@ export function getTemplateRawData(
                         },
                     }
                     let templateRawOffset = 0
+                    const templateLoc = {
+                        start: {
+                            line: node.loc.start.line,
+                            column: node.loc.start.column,
+                        },
+                        end: {
+                            line: node.loc.end.line,
+                            column: node.loc.end.column,
+                        },
+                    }
+                    const templateRange = [...node.range] as [number, number]
                     const start: number = node.value.range[0]
                     const end: number = node.value.range[1]
                     templateRawLoc = {
@@ -1010,6 +1024,8 @@ export function getTemplateRawData(
                         templateRaw,
                         templateRawLoc,
                         templateRawOffset,
+                        templateLoc,
+                        templateRange,
                     })
                 }
             }
