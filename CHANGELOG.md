@@ -1,5 +1,7 @@
 ### v2.0.2
 * Add a feature to parse `s-for` consistent with san.
+* Add template infomation in the source file.
+* Fix parser services api `defineTemplateBodyVisitor` to handle `templateBody` array.
 
 ### V2.0.1
 
