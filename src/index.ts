@@ -97,12 +97,20 @@ export function parseForESLint(
         const templateData = getTemplateRawData(result, code)
         const templateBody = []
         for (const item of templateData) {
-            const { templateRaw, templateRawLoc, templateRawOffset } = item
+            const {
+                templateRaw,
+                templateRawLoc,
+                templateRawOffset,
+                templateLoc,
+                templateRange,
+            } = item
             if (templateRaw) {
                 const tokenizer = new HTMLTokenizer(templateRaw)
                 tokenizer.expressionEnabled = true
                 const rootAST = new HTMLParser(tokenizer, options).parse()
                 fixLocation(rootAST, templateRawLoc, templateRawOffset)
+                rootAST.templateLoc = templateLoc
+                rootAST.templateRange = templateRange
                 templateBody.push(rootAST)
             }
         }

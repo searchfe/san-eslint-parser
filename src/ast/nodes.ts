@@ -855,4 +855,6 @@ export interface VDocumentFragment
     type: "VDocumentFragment"
     parent: null
     children: (VElement | VText | VExpressionContainer)[]
+    templateLoc?: Record<string, any>
+    templateRange?: [number, number]
 }
