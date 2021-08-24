@@ -2340,7 +2340,7 @@
                 "column": 13
             },
             {
-                "message": "Expected to be '<alias> in <expression>', but got empty.",
+                "message": "' ' is invalid directive for s-for",
                 "index": 161,
                 "lineNumber": 9,
                 "column": 16

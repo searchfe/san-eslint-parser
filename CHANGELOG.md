@@ -1,3 +1,6 @@
+### v2.0.2
+* Add a feature to parse `s-for` consistent with san.
+
 ### V2.0.1
 
 * Add a feature to parse interpolation in `s-bind` directive.

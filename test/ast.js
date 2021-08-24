@@ -170,7 +170,6 @@ function validateParent(source) {
 //------------------------------------------------------------------------------
 
 describe("Template AST", () => {
-    // TARGETS = ["error-message-empty"]
     for (const name of TARGETS) {
         if (name === ".DS_Store") {
             continue
@@ -185,21 +184,19 @@ describe("Template AST", () => {
         describe(`'test/fixtures/ast/${name}/source.san'`, () => {
             it("should be parsed to valid AST.", () => {
                 const resultPath = path.join(ROOT, `${name}/ast.json`)
+                const actualText = JSON.stringify(actual.ast, replacer, 4)
                 const expected = fs.readFileSync(resultPath, "utf8")
 
-                assert.strictEqual(
-                    JSON.stringify(actual.ast, replacer, 4),
-                    expected
-                )
+                assert.strictEqual(actualText, expected)
             })
 
             it("should have correct range.", () => {
                 const resultPath = path.join(ROOT, `${name}/token-ranges.json`)
-                const expectedText = fs.readFileSync(resultPath, "utf8")
                 const tokens = getAllTokens(actual.ast).map(t =>
                     source.slice(t.range[0], t.range[1])
                 )
                 const actualText = JSON.stringify(tokens, null, 4)
+                const expectedText = fs.readFileSync(resultPath, "utf8")
 
                 assert.strictEqual(actualText, expectedText)
             })
@@ -244,9 +241,9 @@ describe("Template AST", () => {
 
             it("should traverse AST in the correct order.", () => {
                 const resultPath = path.join(ROOT, `${name}/tree.json`)
-                const expectedText = fs.readFileSync(resultPath, "utf8")
                 const tokens = getTree(source)
                 const actualText = JSON.stringify(tokens, null, 4)
+                const expectedText = fs.readFileSync(resultPath, "utf8")
 
                 assert.strictEqual(actualText, expectedText)
             })

@@ -39,57 +39,7 @@
                                     {
                                         "type": "VExpressionContainer",
                                         "text": "\"{key,name} in list\"",
-                                        "children": [
-                                            {
-                                                "type": "VForExpression",
-                                                "text": "{key,name} in list",
-                                                "children": [
-                                                    {
-                                                        "type": "ObjectPattern",
-                                                        "text": "{key,name}",
-                                                        "children": [
-                                                            {
-                                                                "type": "Property",
-                                                                "text": "key",
-                                                                "children": [
-                                                                    {
-                                                                        "type": "Identifier",
-                                                                        "text": "key",
-                                                                        "children": []
-                                                                    },
-                                                                    {
-                                                                        "type": "Identifier",
-                                                                        "text": "key",
-                                                                        "children": []
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "type": "Property",
-                                                                "text": "name",
-                                                                "children": [
-                                                                    {
-                                                                        "type": "Identifier",
-                                                                        "text": "name",
-                                                                        "children": []
-                                                                    },
-                                                                    {
-                                                                        "type": "Identifier",
-                                                                        "text": "name",
-                                                                        "children": []
-                                                                    }
-                                                                ]
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "list",
-                                                        "children": []
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "children": []
                                     }
                                 ]
                             }
@@ -133,40 +83,7 @@
                                     {
                                         "type": "VExpressionContainer",
                                         "text": "\"([a,,b], c) in list\"",
-                                        "children": [
-                                            {
-                                                "type": "VForExpression",
-                                                "text": "([a,,b], c) in list",
-                                                "children": [
-                                                    {
-                                                        "type": "ArrayPattern",
-                                                        "text": "[a,,b]",
-                                                        "children": [
-                                                            {
-                                                                "type": "Identifier",
-                                                                "text": "a",
-                                                                "children": []
-                                                            },
-                                                            {
-                                                                "type": "Identifier",
-                                                                "text": "b",
-                                                                "children": []
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "c",
-                                                        "children": []
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "list",
-                                                        "children": []
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "children": []
                                     }
                                 ]
                             }
@@ -210,35 +127,7 @@
                                     {
                                         "type": "VExpressionContainer",
                                         "text": "\"[a,b] of list\"",
-                                        "children": [
-                                            {
-                                                "type": "VForExpression",
-                                                "text": "[a,b] of list",
-                                                "children": [
-                                                    {
-                                                        "type": "ArrayPattern",
-                                                        "text": "[a,b]",
-                                                        "children": [
-                                                            {
-                                                                "type": "Identifier",
-                                                                "text": "a",
-                                                                "children": []
-                                                            },
-                                                            {
-                                                                "type": "Identifier",
-                                                                "text": "b",
-                                                                "children": []
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "list",
-                                                        "children": []
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "children": []
                                     }
                                 ]
                             }
@@ -282,68 +171,7 @@
                                     {
                                         "type": "VExpressionContainer",
                                         "text": "\"{[z]:key=x,name} in list\"",
-                                        "children": [
-                                            {
-                                                "type": "VForExpression",
-                                                "text": "{[z]:key=x,name} in list",
-                                                "children": [
-                                                    {
-                                                        "type": "ObjectPattern",
-                                                        "text": "{[z]:key=x,name}",
-                                                        "children": [
-                                                            {
-                                                                "type": "Property",
-                                                                "text": "[z]:key=x",
-                                                                "children": [
-                                                                    {
-                                                                        "type": "Identifier",
-                                                                        "text": "z",
-                                                                        "children": []
-                                                                    },
-                                                                    {
-                                                                        "type": "AssignmentPattern",
-                                                                        "text": "key=x",
-                                                                        "children": [
-                                                                            {
-                                                                                "type": "Identifier",
-                                                                                "text": "key",
-                                                                                "children": []
-                                                                            },
-                                                                            {
-                                                                                "type": "Identifier",
-                                                                                "text": "x",
-                                                                                "children": []
-                                                                            }
-                                                                        ]
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "type": "Property",
-                                                                "text": "name",
-                                                                "children": [
-                                                                    {
-                                                                        "type": "Identifier",
-                                                                        "text": "name",
-                                                                        "children": []
-                                                                    },
-                                                                    {
-                                                                        "type": "Identifier",
-                                                                        "text": "name",
-                                                                        "children": []
-                                                                    }
-                                                                ]
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type": "Identifier",
-                                                        "text": "list",
-                                                        "children": []
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "children": []
                                     }
                                 ]
                             }
