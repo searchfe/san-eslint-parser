@@ -1,3 +1,6 @@
+### v2.0.3
+* Fix a bug when template is not Literal or TemplateLiteral in .ts/.js file.
+
 ### v2.0.2
 * Add a feature to parse `s-for` consistent with san.
 * Add template infomation in the source file.

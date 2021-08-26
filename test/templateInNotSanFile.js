@@ -781,3 +781,28 @@ describe("templateBody in object", () => {
         })
     })
 })
+
+describe("template value is require('...')", () => {
+    const code = `export default {
+        template: require('./index.html')
+    }`
+    let ast = null
+    let tokens = null
+
+    before(() => {
+        const result = parse(
+            code,
+            Object.assign({ filePath: "test.ts" }, PARSER_OPTIONS)
+        )
+        ast = result.ast
+        tokens = result.services.getTemplateBodyTokenStore()
+    })
+
+    describe("ast.templateBody", () => {
+        it("should have no templateBody.", () => {
+            assert(ast.templateBody === undefined)
+            assert(tokens._tokens.length === 0)
+            assert(tokens._comments.length === 0)
+        })
+    })
+})

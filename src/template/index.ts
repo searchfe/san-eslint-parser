@@ -986,6 +986,8 @@ export function getTemplateRawData(
             ) {
                 if (
                     node.value &&
+                    (node.value.type === "Literal" ||
+                        node.value.type === "TemplateLiteral") &&
                     node.value.loc &&
                     Array.isArray(node.value.range)
                 ) {
