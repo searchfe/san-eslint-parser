@@ -79,7 +79,6 @@ function wrapCode(code) {
  * @param {string|object} pattern - The test pattern to be modified.
  * @returns {object|null} The modified pattern.
  */
-//eslint-disable-next-line complexity
 function modifyPattern(ruleId, pattern) {
     if (typeof pattern === "string") {
         if (codeShouldBeSkipped(pattern)) {

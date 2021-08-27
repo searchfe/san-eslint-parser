@@ -405,6 +405,7 @@ function createDirectiveKey(
     const directiveKey = parseDirectiveKeyStatically(node, document)
     const tokens = parseDirectiveKeyTokens(directiveKey)
     replaceTokens(document, directiveKey, tokens)
+    directiveKey.name.originRawName = directiveKey.name.name
 
     // Drop `s-` prefix.
     if (directiveKey.name.name.startsWith("s-")) {
@@ -591,10 +592,11 @@ function parseAttributeValue(
 > {
     const firstChar = code[node.range[0]]
     const quoted = firstChar === '"' || firstChar === "'"
-    const locationCalculator = globalLocationCalculator.getSubCalculatorAfter(
+    let locationCalculator = globalLocationCalculator.getSubCalculatorAfter(
         node.range[0] + (quoted ? 1 : 0),
     )
     const directiveName = directiveKey.name.name
+    const originRawName = directiveKey.name.originRawName || ""
 
     let result: ExpressionParseResult<
         | ESLintExpression
@@ -635,31 +637,36 @@ function parseAttributeValue(
             parserOptions,
         )
     } else {
-        let codeWithoutInterpolation = node.value
+        let wrapValue = node.value
         let matched = false
-        let locationCalculatorInterpolation = locationCalculator
-        const match = /^\{\{((?:.|\r?\n)+?)\}\}$/gu.exec(
-            codeWithoutInterpolation,
+        const parseModel = !(
+            originRawName.startsWith("s-") || originRawName.startsWith("var-")
         )
+        const wrapReg = parseModel
+            ? /^\{=((?:.|\r?\n)+?)=\}$/gu
+            : /^\{\{((?:.|\r?\n)+?)\}\}$/gu
+        const wrapRegLeft = parseModel ? "{=" : "{{"
+        const wrapRegRight = parseModel ? "=}" : "}}"
+        const match = wrapReg.exec(wrapValue)
 
         if (match) {
             matched = true
-            codeWithoutInterpolation = match[1]
-            locationCalculatorInterpolation = globalLocationCalculator.getSubCalculatorAfter(
+            wrapValue = match[1]
+            locationCalculator = globalLocationCalculator.getSubCalculatorAfter(
                 node.range[0] + (quoted ? 1 : 0) + 2,
             )
         }
         if (directiveName === "bind") {
             result = parseExpression(
-                codeWithoutInterpolation,
-                locationCalculatorInterpolation,
+                wrapValue,
+                locationCalculator,
                 parserOptions,
                 { allowFilters: true },
             )
         } else {
             result = parseExpression(
-                codeWithoutInterpolation,
-                locationCalculatorInterpolation,
+                wrapValue,
+                locationCalculator,
                 parserOptions,
             )
         }
@@ -670,7 +677,7 @@ function parseAttributeValue(
                     "Punctuator",
                     node.range[0] + 1,
                     node.range[0] + 3,
-                    "{{",
+                    wrapRegLeft,
                     globalLocationCalculator,
                 ),
             )
@@ -679,7 +686,7 @@ function parseAttributeValue(
                     "Punctuator",
                     node.range[1] - 3,
                     node.range[1] - 1,
-                    "}}",
+                    wrapRegRight,
                     globalLocationCalculator,
                 ),
             )

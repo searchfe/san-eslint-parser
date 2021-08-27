@@ -164,7 +164,8 @@
                                         }
                                     },
                                     "name": "bind",
-                                    "rawName": ":"
+                                    "rawName": ":",
+                                    "originRawName": "bind"
                                 },
                                 "argument": {
                                     "type": "VIdentifier",
@@ -336,7 +337,8 @@
                                         }
                                     },
                                     "name": "on",
-                                    "rawName": "@"
+                                    "rawName": "@",
+                                    "originRawName": "on"
                                 },
                                 "argument": {
                                     "type": "VIdentifier",
@@ -508,7 +510,8 @@
                                         }
                                     },
                                     "name": "on",
-                                    "rawName": "on-"
+                                    "rawName": "on-",
+                                    "originRawName": "on"
                                 },
                                 "argument": {
                                     "type": "VIdentifier",

@@ -164,7 +164,8 @@
                                         }
                                     },
                                     "name": "if",
-                                    "rawName": "if"
+                                    "rawName": "if",
+                                    "originRawName": "s-if"
                                 },
                                 "argument": null,
                                 "modifiers": []

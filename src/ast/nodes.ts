@@ -755,6 +755,7 @@ export interface VIdentifier extends HasLocation, HasParent {
     parent: VAttribute | VDirectiveKey
     name: string
     rawName: string
+    originRawName?: string
 }
 
 /**

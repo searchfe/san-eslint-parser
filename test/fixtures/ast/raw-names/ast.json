@@ -202,7 +202,8 @@
                                         }
                                     },
                                     "name": "bind",
-                                    "rawName": "bind"
+                                    "rawName": "bind",
+                                    "originRawName": "s-bind"
                                 },
                                 "argument": null,
                                 "modifiers": []

@@ -164,7 +164,8 @@
                                         }
                                     },
                                     "name": "html",
-                                    "rawName": "html"
+                                    "rawName": "html",
+                                    "originRawName": "s-html"
                                 },
                                 "argument": null,
                                 "modifiers": []

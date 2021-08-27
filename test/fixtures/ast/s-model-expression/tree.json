@@ -1,0 +1,513 @@
+[
+    {
+        "type": "VElement",
+        "text": "<template>\n    <div s-if=\"{=123=}\"></div>\n    <div s-else=\"{=123=}\"></div>\n    <div s-elif=\"{=123=}\"></div>\n    <div s-else-if=\"{=123=}\"></div>\n    <div s-for=\"{=123=}\"></div>\n    <div s-html=\"{=123=}\"></div>\n    <div s-bind=\"{=123=}\"></div>\n    <slot var-n=\"{=123=}\"></slot>\n    <slot s-transition=\"{=123=}\"></slot>\n    <slot s-ref=\"{=123=}\"></slot>\n    <slot aaa=\"{=123=}\"></slot>\n</template>",
+        "children": [
+            {
+                "type": "VStartTag",
+                "text": "<template>",
+                "children": []
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-if=\"{=123=}\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-if=\"{=123=}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-if=\"{=123=}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-if",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-if",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{=123=}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-else=\"{=123=}\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-else=\"{=123=}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-else=\"{=123=}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-else",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-else",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{=123=}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-elif=\"{=123=}\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-elif=\"{=123=}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-elif=\"{=123=}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-elif",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-elif",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{=123=}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-else-if=\"{=123=}\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-else-if=\"{=123=}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-else-if=\"{=123=}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-else-if",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-else-if",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{=123=}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-for=\"{=123=}\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-for=\"{=123=}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-for=\"{=123=}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-for",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-for",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{=123=}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-html=\"{=123=}\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-html=\"{=123=}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-html=\"{=123=}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-html",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-html",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{=123=}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<div s-bind=\"{=123=}\"></div>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<div s-bind=\"{=123=}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-bind=\"{=123=}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-bind",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-bind",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{=123=}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</div>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<slot var-n=\"{=123=}\"></slot>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<slot var-n=\"{=123=}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "var-n=\"{=123=}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "var-n",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "var-n",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{=123=}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</slot>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<slot s-transition=\"{=123=}\"></slot>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<slot s-transition=\"{=123=}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-transition=\"{=123=}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-transition",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-transition",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{=123=}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</slot>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<slot s-ref=\"{=123=}\"></slot>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<slot s-ref=\"{=123=}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-ref=\"{=123=}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-ref",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-ref",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{=123=}\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</slot>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<slot aaa=\"{=123=}\"></slot>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<slot aaa=\"{=123=}\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "aaa=\"{=123=}\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "aaa",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "aaa",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"{=123=}\"",
+                                        "children": [
+                                            {
+                                                "type": "Literal",
+                                                "text": "123",
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</slot>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n",
+                "children": []
+            },
+            {
+                "type": "VEndTag",
+                "text": "</template>",
+                "children": []
+            }
+        ]
+    }
+]

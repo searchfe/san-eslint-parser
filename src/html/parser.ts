@@ -156,6 +156,33 @@ function isInterpolation(node: VAttribute) {
 }
 
 /**
+ * Check if the attribute is the scoped slot
+ * @param node The VAttribute node.
+ */
+function isScopedSlot(node: VAttribute) {
+    return (
+        node.key.name.startsWith("var-") &&
+        node.parent &&
+        node.parent.parent &&
+        node.parent.parent.type === "VElement" &&
+        node.parent.parent.name === "slot"
+    )
+}
+
+/**
+ * Check if the attribute is the scoped slot
+ * @param node The VAttribute node.
+ */
+function isModel(node: VAttribute) {
+    return (
+        !node.key.name.startsWith("s-") &&
+        node.value &&
+        typeof node.value.value === "string" &&
+        /\{=((?:.|\r?\n)+?)=\}/gu.test(node.value.value)
+    )
+}
+
+/**
  * The parser of HTML.
  * This is not following to the HTML spec completely because Vue.js template spec is pretty different to HTML.
  */
@@ -423,6 +450,8 @@ export class Parser {
             (this.expressionEnabled ||
                 (attrName === "s-pre" && !this.isInVPreElement)) &&
             (DIRECTIVE_NAME.test(attrName) ||
+                isScopedSlot(node) ||
+                isModel(node) ||
                 attrName === "slot-scope" ||
                 (tagName === "template" && attrName === "scope"))
         ) {
@@ -452,7 +481,6 @@ export class Parser {
      * Handle the start tag token.
      * @param token The token to handle.
      */
-    //eslint-disable-next-line complexity
     protected StartTag(token: StartTag): void {
         debug("[html] StartTag %j", token)
 

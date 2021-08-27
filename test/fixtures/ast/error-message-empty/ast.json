@@ -201,7 +201,8 @@
                                         }
                                     },
                                     "name": "bind",
-                                    "rawName": ":"
+                                    "rawName": ":",
+                                    "originRawName": "bind"
                                 },
                                 "argument": {
                                     "type": "VIdentifier",
@@ -371,7 +372,8 @@
                                         }
                                     },
                                     "name": "bind",
-                                    "rawName": ":"
+                                    "rawName": ":",
+                                    "originRawName": "bind"
                                 },
                                 "argument": {
                                     "type": "VIdentifier",
@@ -541,7 +543,8 @@
                                         }
                                     },
                                     "name": "on",
-                                    "rawName": "@"
+                                    "rawName": "@",
+                                    "originRawName": "on"
                                 },
                                 "argument": {
                                     "type": "VIdentifier",
@@ -711,7 +714,8 @@
                                         }
                                     },
                                     "name": "on",
-                                    "rawName": "@"
+                                    "rawName": "@",
+                                    "originRawName": "on"
                                 },
                                 "argument": {
                                     "type": "VIdentifier",
@@ -881,7 +885,8 @@
                                         }
                                     },
                                     "name": "for",
-                                    "rawName": "for"
+                                    "rawName": "for",
+                                    "originRawName": "s-for"
                                 },
                                 "argument": null,
                                 "modifiers": []
@@ -1033,7 +1038,8 @@
                                         }
                                     },
                                     "name": "for",
-                                    "rawName": "for"
+                                    "rawName": "for",
+                                    "originRawName": "s-for"
                                 },
                                 "argument": null,
                                 "modifiers": []

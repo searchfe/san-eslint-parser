@@ -1,0 +1,239 @@
+[
+    {
+        "type": "VElement",
+        "text": "<template>\n    <slot var-aaa=\"a\"></slot>\n    <slot s-for=\"a in b\" var-aaa=\"a\"></slot>\n    <x s-for=\"a in b\" var-aaa=\"a\"></x>\n</template>",
+        "children": [
+            {
+                "type": "VStartTag",
+                "text": "<template>",
+                "children": []
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<slot var-aaa=\"a\"></slot>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<slot var-aaa=\"a\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "var-aaa=\"a\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "var-aaa",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "var-aaa",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"a\"",
+                                        "children": [
+                                            {
+                                                "type": "Identifier",
+                                                "text": "a",
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</slot>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<slot s-for=\"a in b\" var-aaa=\"a\"></slot>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<slot s-for=\"a in b\" var-aaa=\"a\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-for=\"a in b\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-for",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-for",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"a in b\"",
+                                        "children": [
+                                            {
+                                                "type": "VForExpression",
+                                                "text": "\"a in b",
+                                                "children": [
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "a",
+                                                        "children": []
+                                                    },
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "b",
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "VAttribute",
+                                "text": "var-aaa=\"a\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "var-aaa",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "var-aaa",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"a\"",
+                                        "children": [
+                                            {
+                                                "type": "Identifier",
+                                                "text": "a",
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</slot>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n    ",
+                "children": []
+            },
+            {
+                "type": "VElement",
+                "text": "<x s-for=\"a in b\" var-aaa=\"a\"></x>",
+                "children": [
+                    {
+                        "type": "VStartTag",
+                        "text": "<x s-for=\"a in b\" var-aaa=\"a\">",
+                        "children": [
+                            {
+                                "type": "VAttribute",
+                                "text": "s-for=\"a in b\"",
+                                "children": [
+                                    {
+                                        "type": "VDirectiveKey",
+                                        "text": "s-for",
+                                        "children": [
+                                            {
+                                                "type": "VIdentifier",
+                                                "text": "s-for",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "VExpressionContainer",
+                                        "text": "\"a in b\"",
+                                        "children": [
+                                            {
+                                                "type": "VForExpression",
+                                                "text": "\"a in b",
+                                                "children": [
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "a",
+                                                        "children": []
+                                                    },
+                                                    {
+                                                        "type": "Identifier",
+                                                        "text": "b",
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "VAttribute",
+                                "text": "var-aaa=\"a\"",
+                                "children": [
+                                    {
+                                        "type": "VIdentifier",
+                                        "text": "var-aaa",
+                                        "children": []
+                                    },
+                                    {
+                                        "type": "VLiteral",
+                                        "text": "\"a\"",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VEndTag",
+                        "text": "</x>",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "type": "VText",
+                "text": "\n",
+                "children": []
+            },
+            {
+                "type": "VEndTag",
+                "text": "</template>",
+                "children": []
+            }
+        ]
+    }
+]
