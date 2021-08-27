@@ -643,7 +643,7 @@ function parseAttributeValue(
             originRawName.startsWith("s-") || originRawName.startsWith("var-")
         )
         const wrapReg = parseModel
-            ? /^\{=((?:.|\r?\n)+?)=\}$/gu
+            ? /^\{=((?:.|\r?\n)*?)=\}$/gu
             : /^\{\{((?:.|\r?\n)+?)\}\}$/gu
         const wrapRegLeft = parseModel ? "{=" : "{{"
         const wrapRegRight = parseModel ? "=}" : "}}"

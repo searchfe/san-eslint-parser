@@ -178,7 +178,7 @@ function isModel(node: VAttribute) {
         !node.key.name.startsWith("s-") &&
         node.value &&
         typeof node.value.value === "string" &&
-        /\{=((?:.|\r?\n)+?)=\}/gu.test(node.value.value)
+        /\{=((?:.|\r?\n)*?)=\}/gu.test(node.value.value)
     )
 }
 
