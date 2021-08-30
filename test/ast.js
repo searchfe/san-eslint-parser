@@ -22,7 +22,7 @@ const Linter = require("./fixtures/eslint").Linter
 
 const PARSER = path.resolve(__dirname, "../src/index.ts")
 const ROOT = path.join(__dirname, "fixtures/ast")
-// const TARGETS = fs.readdirSync(ROOT)
+const TARGETS = fs.readdirSync(ROOT)
 const PARSER_OPTIONS = {
     comment: true,
     ecmaVersion: 9,
@@ -170,7 +170,7 @@ function validateParent(source) {
 //------------------------------------------------------------------------------
 
 describe("Template AST", () => {
-    for (const name of ["var-expression"]) {
+    for (const name of TARGETS) {
         if (name === ".DS_Store") {
             continue
         }
@@ -185,7 +185,6 @@ describe("Template AST", () => {
             it("should be parsed to valid AST.", () => {
                 const resultPath = path.join(ROOT, `${name}/ast.json`)
                 const actualText = JSON.stringify(actual.ast, replacer, 4)
-                fs.writeFileSync(resultPath, actualText)
                 const expected = fs.readFileSync(resultPath, "utf8")
 
                 assert.strictEqual(actualText, expected)
@@ -197,7 +196,6 @@ describe("Template AST", () => {
                     source.slice(t.range[0], t.range[1])
                 )
                 const actualText = JSON.stringify(tokens, null, 4)
-                fs.writeFileSync(resultPath, actualText)
                 const expectedText = fs.readFileSync(resultPath, "utf8")
 
                 assert.strictEqual(actualText, expectedText)
@@ -245,7 +243,6 @@ describe("Template AST", () => {
                 const resultPath = path.join(ROOT, `${name}/tree.json`)
                 const tokens = getTree(source)
                 const actualText = JSON.stringify(tokens, null, 4)
-                fs.writeFileSync(resultPath, actualText)
                 const expectedText = fs.readFileSync(resultPath, "utf8")
 
                 assert.strictEqual(actualText, expectedText)
