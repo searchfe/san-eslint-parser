@@ -164,7 +164,8 @@
                                         }
                                     },
                                     "name": "a",
-                                    "rawName": "a"
+                                    "rawName": "a",
+                                    "originRawName": "s-a"
                                 },
                                 "argument": null,
                                 "modifiers": [
@@ -318,7 +319,8 @@
                                         }
                                     },
                                     "name": "a",
-                                    "rawName": "a"
+                                    "rawName": "a",
+                                    "originRawName": "s-a"
                                 },
                                 "argument": null,
                                 "modifiers": [
@@ -533,7 +535,8 @@
                                         }
                                     },
                                     "name": "a",
-                                    "rawName": "a"
+                                    "rawName": "a",
+                                    "originRawName": "s-a"
                                 },
                                 "argument": null,
                                 "modifiers": [

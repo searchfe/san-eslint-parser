@@ -1,0 +1,5 @@
+<template>
+    <slot var-aaa="a"></slot>
+    <slot s-for="a in b" var-aaa="a"></slot>
+    <x s-for="a in b" var-aaa="a"></x>
+</template>

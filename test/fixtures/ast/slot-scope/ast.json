@@ -221,7 +221,8 @@
                                                 }
                                             },
                                             "name": "slot-scope",
-                                            "rawName": "slot-scope"
+                                            "rawName": "slot-scope",
+                                            "originRawName": "slot-scope"
                                         },
                                         "argument": null,
                                         "modifiers": []

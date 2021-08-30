@@ -4,8 +4,7 @@ extends:
 
 rules:
   complexity:
-    - error
-    - max: 20
+    - off
   no-constant-condition:
     - off
 

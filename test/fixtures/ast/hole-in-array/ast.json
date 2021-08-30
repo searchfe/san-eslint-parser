@@ -221,7 +221,8 @@
                                                 }
                                             },
                                             "name": "for",
-                                            "rawName": "for"
+                                            "rawName": "for",
+                                            "originRawName": "s-for"
                                         },
                                         "argument": null,
                                         "modifiers": []

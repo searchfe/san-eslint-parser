@@ -164,7 +164,8 @@
                                         }
                                     },
                                     "name": "a",
-                                    "rawName": "a"
+                                    "rawName": "a",
+                                    "originRawName": "s-a"
                                 },
                                 "argument": {
                                     "type": "VIdentifier",
@@ -316,7 +317,8 @@
                                         }
                                     },
                                     "name": "a",
-                                    "rawName": "a"
+                                    "rawName": "a",
+                                    "originRawName": "s-a"
                                 },
                                 "argument": {
                                     "type": "VIdentifier",
@@ -468,7 +470,8 @@
                                         }
                                     },
                                     "name": "a",
-                                    "rawName": "a"
+                                    "rawName": "a",
+                                    "originRawName": "s-a"
                                 },
                                 "argument": {
                                     "type": "VIdentifier",
