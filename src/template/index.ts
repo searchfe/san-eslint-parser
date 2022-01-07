@@ -988,7 +988,9 @@ export function getTemplateRawData(
         enterNode(node: any) {
             if (
                 node &&
-                (node.type === "ClassProperty" || node.type === "Property") &&
+                (node.type === "PropertyDefinition" ||
+                    node.type === "ClassProperty" ||
+                    node.type === "Property") &&
                 node.key.name === "template"
             ) {
                 if (
