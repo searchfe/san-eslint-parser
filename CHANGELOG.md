@@ -1,3 +1,6 @@
+### v2.0.5
+* Support @typescript-eslint/parser v5+
+
 ### v2.0.4
 * Add a feature to parse bidirectional binding `{==}` to a directive key with some tokens.
 * Add a feature to parse `slot scope` i.e. `var-*` without tokens only to relate to variables.
