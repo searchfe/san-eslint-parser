@@ -1,3 +1,6 @@
+### v2.0.6
+* Add beforeParse to handle code to parse;
+
 ### v2.0.5
 * Support @typescript-eslint/parser v5+
 
