@@ -90,9 +90,15 @@ export function parseForESLint(
         options || {},
     )
 
+    const isSanFile = !isVueFile(code, options)
+    if (typeof options.beforeParse === "function") {
+        //eslint-disable-next-line no-param-reassign
+        code = options.beforeParse(code, { isSanFile })
+    }
+
     let result: AST.ESLintExtendedProgram
     let document: AST.VDocumentFragment | null
-    if (!isVueFile(code, options)) {
+    if (isSanFile) {
         result = parseScript(code, options)
         const templateData = getTemplateRawData(result, code)
         const templateBody = []
